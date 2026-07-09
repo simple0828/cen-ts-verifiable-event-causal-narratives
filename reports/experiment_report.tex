@@ -1,0 +1,179 @@
+\section*{CEN-TS: Verifiable Causal Event Narratives for Text-Paired Time Series Forecasting
+
+#\section*{Abstract
+
+This report documents a first-stage reproducible prototype for text-paired time series forecasting. CEN-TS extracts structured events from timestamped text, builds lagged event-variable graphs, verifies event explanations against observed target movement, and compares verified event features against numerical-only and raw text embedding baselines. Results are preliminary and use lightweight models to validate the experimental loop.
+
+#\section*{Motivation
+
+Raw text embeddings can inject useful context, but they are difficult to audit and can be brittle under irrelevant text. Event-causal narratives expose intermediate claims: what happened, what variable it should affect, with what polarity, lag, and confidence. A verifier then checks whether the claimed event is directionally consistent with the numerical sequence.
+
+#\section*{Related Experimental Anchors
+
+- TaTS: implemented as `raw_text_embedding` using TF-IDF + TruncatedSVD text-as-time-series features.
+- Augur: represented by lagged variable-variable correlations in the causal graph.
+- Inferring Events: represented by event consistency scoring from pre/post target movement and counterfactual windows.
+- APO: represented by a lightweight prompt-program interface; no API calls were required for this preliminary run.
+
+#\section*{Dataset
+
+Time-MMD was cloned into `data/raw/Time-MMD` and processed into aligned numerical/text CSV files under `data/processed/TimeMMD`. The loader discovers available domains, joins textual `fact/preds` records to numerical timestamps, and records coverage statistics. GAMETime was cloned into `data/raw/GAMETime` and registered for verifier sanity checks in the next appendix-style experiment.
+
+Default split is temporal: 70% train, 10% validation, 20% test. The smoke configuration uses `L=24` and horizons `H in {3, 6}` unless frequency-specific settings are expanded.
+
+#\section*{Methods
+
+- Numerical-only: ridge regression over flattened numerical windows.
+- TaTS-style fusion: numerical windows plus TF-IDF/SVD text embeddings.
+- Augur-lite: lagged correlation graph among numerical variables.
+- Event feature model: keyword and polarity based structured event extraction.
+- Event graph: event-to-variable edges plus lagged variable-variable edges.
+- Event consistency verifier: pre/post target delta, direction agreement, lag effect, and random-window counterfactual lift.
+- Full CEN-TS: verified event features in the forecasting model, plus sample causal narratives.
+- Narrative-APO: interface implemented; full LLM optimization is deferred to the next stage.
+
+#\section*{Metrics
+
+Forecasting metrics include MSE, MAE, RMSE, MAPE, and directional accuracy. Explanation metrics include event consistency, groundedness, selected event count, and narrative token length. Robustness metrics include MSE changes under shuffled text and random text injection.
+
+#\section*{Main Results
+
+| method              | domain     |   horizon |        mse |       mae |   trend_f1 |   event_consistency |   avg_tokens |
+|:--------------------|:-----------|----------:|-----------:|----------:|-----------:|--------------------:|-------------:|
+| event_no_verifier   | Energy     |         3 | 0.0421768  | 0.145895  |   0.534637 |            0.430542 |           11 |
+| event_no_verifier   | Energy     |         6 | 0.128003   | 0.24669   |   0.500451 |            0.430542 |           11 |
+| event_no_verifier   | Health_AFR |         3 | 0.00494017 | 0.0581549 |   0.514894 |            0.435386 |           11 |
+| event_no_verifier   | Health_AFR |         6 | 0.00813756 | 0.0759016 |   0.505532 |            0.435386 |           11 |
+| event_no_verifier   | Health_US  |         3 | 1.50758    | 0.893252  |   0.604255 |            0.468711 |           11 |
+| event_no_verifier   | Health_US  |         6 | 2.86918    | 1.25994   |   0.628936 |            0.468711 |           11 |
+| event_with_verifier | Energy     |         3 | 0.0265549  | 0.117849  |   0.515613 |            0.430542 |           11 |
+| event_with_verifier | Energy     |         6 | 0.0859415  | 0.20451   |   0.502115 |            0.430542 |           11 |
+| event_with_verifier | Health_AFR |         3 | 0.00377074 | 0.0501313 |   0.506383 |            0.435386 |           11 |
+| event_with_verifier | Health_AFR |         6 | 0.00578692 | 0.0622312 |   0.486809 |            0.435386 |           11 |
+| event_with_verifier | Health_US  |         3 | 1.76981    | 1.01262   |   0.644681 |            0.468711 |           11 |
+| event_with_verifier | Health_US  |         6 | 3.29768    | 1.39386   |   0.657872 |            0.468711 |           11 |
+| full_cents_feature  | Energy     |         3 | 0.0265549  | 0.117849  |   0.515613 |            0.430542 |           11 |
+| full_cents_feature  | Energy     |         6 | 0.0859415  | 0.20451   |   0.502115 |            0.430542 |           11 |
+| full_cents_feature  | Health_AFR |         3 | 0.00377074 | 0.0501313 |   0.506383 |            0.435386 |           11 |
+| full_cents_feature  | Health_AFR |         6 | 0.00578692 | 0.0622312 |   0.486809 |            0.435386 |           11 |
+| full_cents_feature  | Health_US  |         3 | 1.76981    | 1.01262   |   0.644681 |            0.468711 |           11 |
+| full_cents_feature  | Health_US  |         6 | 3.29768    | 1.39386   |   0.657872 |            0.468711 |           11 |
+| numerical_only      | Energy     |         3 | 0.0208954  | 0.104428  |   0.540989 |            0        |            0 |
+| numerical_only      | Energy     |         6 | 0.0669833  | 0.188324  |   0.514018 |            0        |            0 |
+
+#\section*{Ablation Study
+
+| method              |      mse |      mae |   event_consistency | observation                            |
+|:--------------------|---------:|---------:|--------------------:|:---------------------------------------|
+| event_no_verifier   | 0.692513 | 0.421604 |            0.443446 | Stage-1 lightweight closed-loop result |
+| event_with_verifier | 0.784056 | 0.442299 |            0.443446 | Stage-1 lightweight closed-loop result |
+| full_cents_feature  | 0.784056 | 0.442299 |            0.443446 | Stage-1 lightweight closed-loop result |
+| numerical_only      | 0.757508 | 0.428059 |            0        | Stage-1 lightweight closed-loop result |
+| persistence         | 0.199053 | 0.191251 |            0        | Stage-1 lightweight closed-loop result |
+| raw_text_embedding  | 1.4824   | 0.627942 |            0        | Stage-1 lightweight closed-loop result |
+
+#\section*{Robustness Study
+
+|   seed | domain     | method              |   horizon |   original_mse |   shuffled_text_mse |   random_text_mse |       drop |
+|-------:|:-----------|:--------------------|----------:|---------------:|--------------------:|------------------:|-----------:|
+|   2026 | Energy     | event_with_verifier |         3 |     0.0357625  |          0.0518571  |        0.0357625  |  0.450043  |
+|   2026 | Energy     | event_with_verifier |         6 |     0.130974   |          0.17382    |        0.130974   |  0.327132  |
+|   2026 | Energy     | event_with_verifier |         3 |     0.0234855  |          0.0253167  |        0.0209254  |  0.0779715 |
+|   2026 | Energy     | event_with_verifier |         6 |     0.0709299  |          0.0822511  |        0.0730196  |  0.159611  |
+|   2026 | Health_US  | event_with_verifier |         3 |     1.77202    |          2.41546    |        1.77202    |  0.363112  |
+|   2026 | Health_US  | event_with_verifier |         6 |     3.31852    |          5.19547    |        3.31852    |  0.565596  |
+|   2026 | Health_AFR | event_with_verifier |         3 |     0.00377076 |          0.00299528 |        0.00379011 | -0.205655  |
+|   2026 | Health_AFR | event_with_verifier |         6 |     0.00578695 |          0.00503171 |        0.00580453 | -0.130507  |
+|   2027 | Energy     | event_with_verifier |         3 |     0.0234869  |          0.0249598  |        0.0209259  |  0.0627144 |
+|   2027 | Energy     | event_with_verifier |         6 |     0.0709345  |          0.0838909  |        0.0730212  |  0.182653  |
+|   2027 | Health_US  | event_with_verifier |         3 |     1.76258    |          1.96278    |        1.76258    |  0.113582  |
+|   2027 | Health_US  | event_with_verifier |         6 |     3.25053    |          2.89944    |        3.25053    | -0.10801   |
+|   2027 | Health_AFR | event_with_verifier |         3 |     0.0037707  |          0.0035573  |        0.00379005 | -0.056592  |
+|   2027 | Health_AFR | event_with_verifier |         6 |     0.00578689 |          0.00540209 |        0.00580447 | -0.066494  |
+|   2028 | Energy     | event_with_verifier |         3 |     0.0234848  |          0.0193863  |        0.0209251  | -0.174516  |
+|   2028 | Energy     | event_with_verifier |         6 |     0.0709276  |          0.0632194  |        0.0730188  | -0.108677  |
+|   2028 | Health_US  | event_with_verifier |         3 |     1.77483    |          1.94258    |        1.77483    |  0.0945201 |
+|   2028 | Health_US  | event_with_verifier |         6 |     3.32398    |          3.77275    |        3.32398    |  0.135007  |
+|   2028 | Health_AFR | event_with_verifier |         3 |     0.00377075 |          0.00354626 |        0.0037901  | -0.0595335 |
+|   2028 | Health_AFR | event_with_verifier |         6 |     0.00578694 |          0.00531465 |        0.00580452 | -0.0816135 |
+
+#\section*{Case Study
+
+##\section*{Case 1: Energy
+
+- Raw text: The national average retail regular gasoline price increased to $4.102 per gallon on March 7, 2022, $0.494 above last week’s price and $1.331 over a year ago. In the long term (next 4-18 months), I predict that gasoline prices will remain v
+- Extracted event: The national average retail regular gasoline price increased to $4.102 per gallon on March 7, 2022, $0.494 above last week’s price and $1.331 over a year ago. In the long term (next 4-18 months), I predict that gasoline prices will remain v
+- Polarity / lag: positive / 1-3
+- Verifier score: 0.897
+- Graph edges: [{'source': 'a3b3b80b9617cda8', 'target': 'OT', 'edge_type': 'event_to_var', 'polarity': 'positive', 'lag': [1, 3], 'confidence': 0.7000000000000001, 'evidence_score': 0.8969259568028305}]
+- Final narrative excerpt:
+
+```text
+Verified causal event narrative:
+1. The national average retail regular gasoline price increased to $4.102 per gallon on March 7, 2022, $0.494 above last week’s price and $1.331 over a year ago. In the long term (nex
+   - Time: 2022-02-28 00:00:00
+   - Target: OT
+   - Expected effect: positive
+   - Lag: 1-3
+   - Consistency score: 0.897
+   - Evidence: Rule-based extraction from direction and domain keywords; use verifier before trusting.
+2. The national average retail regular gasoline price increased to $4.315 per gallon on March 14, 2022, $0.213 above last week’s price and $1.462 over a year ago. In the long term (ne
+   - Time: 2022-03-07 00:00:00
+   - Target: OT
+   - Expected effect: positive
+   - Lag: 1-3
+   - Consistency score: 0.896
+   - Evidence: Rule-based extraction from direction and domain keywords; use verifier before trusting.
+3. The national average retail regular gasoline p
+```
+
+##\section*{Case 2: Energy
+
+- Raw text: The national average retail regular gasoline price increased to $4.315 per gallon on March 14, 2022, $0.213 above last week’s price and $1.462 over a year ago. In the long term (next 4-18 months), I predict that gasoline prices will remain 
+- Extracted event: The national average retail regular gasoline price increased to $4.315 per gallon on March 14, 2022, $0.213 above last week’s price and $1.462 over a year ago. In the long term (next 4-18 months), I predict that gasoline prices will remain 
+- Polarity / lag: positive / 1-3
+- Verifier score: 0.896
+- Graph edges: [{'source': 'a731542d204b2fa0', 'target': 'OT', 'edge_type': 'event_to_var', 'polarity': 'positive', 'lag': [1, 3], 'confidence': 0.7000000000000001, 'evidence_score': 0.8963613920889415}]
+- Final narrative excerpt:
+
+```text
+Verified causal event narrative:
+1. The national average retail regular gasoline price increased to $4.102 per gallon on March 7, 2022, $0.494 above last week’s price and $1.331 over a year ago. In the long term (nex
+   - Time: 2022-02-28 00:00:00
+   - Target: OT
+   - Expected effect: positive
+   - Lag: 1-3
+   - Consistency score: 0.897
+   - Evidence: Rule-based extraction from direction and domain keywords; use verifier before trusting.
+2. The national average retail regular gasoline price increased to $4.315 per gallon on March 14, 2022, $0.213 above last week’s price and $1.462 over a year ago. In the long term (ne
+   - Time: 2022-03-07 00:00:00
+   - Target: OT
+   - Expected effect: positive
+   - Lag: 1-3
+   - Consistency score: 0.896
+   - Evidence: Rule-based extraction from direction and domain keywords; use verifier before trusting.
+3. The national average retail regular gasoline p
+```
+
+#\section*{Failure Analysis
+
+- Rule-based event extraction can confuse generic price trend statements with actionable causal events.
+- Lag ranges are currently coarse and fixed to 1-3 time steps for most extracted events.
+- Some Time-MMD domains have sparse text coverage over early numerical history, so text features may affect only later windows.
+- The lightweight ridge model is useful for pipeline validation but is not a replacement for stronger PatchTST, DLinear, iTransformer, or MM-TSFlib baselines.
+
+#\section*{Conclusion
+
+Preliminary support: verifier-filtered event features outperform raw text embeddings on mean MSE. The current evidence should be treated as preliminary. The most valuable completed contribution is the closed-loop experimental harness: aligned data, baselines, structured events, graph construction, verifier scoring, robustness checks, and reproducible reporting.
+
+#\section*{Next Experiments
+
+1. Strengthen baselines by aligning with MM-TSFlib and TaTS settings.
+2. Strengthen event extraction with a stronger LLM and domain-specific event schemas.
+3. Add Granger, PCMCI, and transfer entropy for causal edge validation.
+4. Improve verifier with matched counterfactual windows and bootstrap significance.
+5. Run full Narrative-APO using validation errors to refine prompt programs.
+6. Expand domains and use OOD temporal splits.
+7. Add human or LLM-as-judge evaluation for narrative groundedness.
+8. Prepare paper-quality figures, tables, and appendix diagnostics.
+}
