@@ -8,3 +8,5 @@ pytest>=7.0
 tqdm>=4.65
 tabulate>=0.9
 openai>=1.0
+torch>=2.13
+reformer-pytorch>=1.4
