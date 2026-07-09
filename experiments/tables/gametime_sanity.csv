@@ -1,0 +1,4 @@
+check,passed,score,note
+repository_data_availability,False,0.0,GAMETime repo clone does not include full benchmark data; README says to request/download data separately.
+synthetic_positive_event_verifier,True,0.8535540222223079,Positive event followed by target increase.
+synthetic_negative_event_verifier,True,0.7789970980577425,Negative event followed by target decrease.

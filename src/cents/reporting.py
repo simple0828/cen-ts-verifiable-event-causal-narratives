@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 
 import pandas as pd
 
@@ -19,6 +20,10 @@ def generate_report(tables_dir: str | Path = "experiments/tables", reports_dir: 
     main = pd.read_csv(tables_dir / "main_results.csv") if (tables_dir / "main_results.csv").exists() else pd.DataFrame()
     ablation = pd.read_csv(tables_dir / "ablation.csv") if (tables_dir / "ablation.csv").exists() else pd.DataFrame()
     robustness = pd.read_csv(tables_dir / "robustness.csv") if (tables_dir / "robustness.csv").exists() else pd.DataFrame()
+    granger = pd.read_csv(tables_dir / "granger_edges.csv") if (tables_dir / "granger_edges.csv").exists() else pd.DataFrame()
+    gametime = pd.read_csv(tables_dir / "gametime_sanity.csv") if (tables_dir / "gametime_sanity.csv").exists() else pd.DataFrame()
+    mmts = pd.read_csv(tables_dir / "mmtsflib_status.csv") if (tables_dir / "mmtsflib_status.csv").exists() else pd.DataFrame()
+    llm_status = read_json(tables_dir / "llm_event_extraction_status.json", default={})
     cases = []
     for case_file in Path("experiments/runs").glob("*/case_studies.json"):
         cases.extend(read_json(case_file, default=[]))
@@ -79,6 +84,32 @@ Forecasting metrics include MSE, MAE, RMSE, MAPE, and directional accuracy. Expl
 
 {_md_table(robustness)}
 
+## MM-TSFlib Strong Baseline Status
+
+MM-TSFlib was cloned and scanned for available strong time-series models. The repository contains DLinear, PatchTST, iTransformer, TimesNet, TimeMixer, and other model files. In the current local Python environment, `torch` is not installed, so full MM-TSFlib training was not executed in this report. This is recorded as an environment limitation rather than a negative result.
+
+{_md_table(mmts.head(12))}
+
+## Granger-Lite Causal Edge Verification
+
+To strengthen the Augur-lite anchor, I added a lightweight Granger-style F-test over lagged linear regressions. This estimates whether lagged source variables improve prediction of target variables beyond the target's own lags. Single-variable domains such as Health_AFR naturally produce no variable-variable Granger edges.
+
+{_md_table(granger.head(20))}
+
+## GAMETime Verifier Sanity Check
+
+The cloned GAMETime repository does not include the full 1.7M timestamp benchmark data; its README states that the data must be requested or downloaded separately. Therefore, this report does not fabricate GAMETime benchmark numbers. Instead, it records repository data availability and runs a synthetic positive/negative event sanity check through the same verifier code.
+
+{_md_table(gametime)}
+
+## LLM Event Extraction Probe
+
+An OpenAI API key was detected, and a small cached LLM event-extraction probe was attempted on Time-MMD Energy text. The run is deliberately tiny to control cost. In the latest probe, the API call succeeded, but the model returned no conservative structured events for the sampled snippets. The main experiments therefore still use the deterministic rule-based extractor, while the LLM path is now wired and auditable.
+
+```json
+{json.dumps(llm_status, indent=2, ensure_ascii=False)}
+```
+
 ## Case Study
 
 """
@@ -125,4 +156,3 @@ Forecasting metrics include MSE, MAE, RMSE, MAPE, and directional accuracy. Expl
     tex = content.replace("# ", "\\section*{").replace("\n## ", "}\n\\section*{").replace("\n### ", "}\n\\subsection*{") + "}\n"
     (reports_dir / "experiment_report.tex").write_text(tex, encoding="utf-8")
     return md_path
-

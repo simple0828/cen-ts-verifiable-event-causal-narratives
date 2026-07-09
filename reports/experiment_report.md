@@ -40,37 +40,37 @@ Forecasting metrics include MSE, MAE, RMSE, MAPE, and directional accuracy. Expl
 
 | method              | domain     |   horizon |        mse |       mae |   trend_f1 |   event_consistency |   avg_tokens |
 |:--------------------|:-----------|----------:|-----------:|----------:|-----------:|--------------------:|-------------:|
-| event_no_verifier   | Energy     |         3 | 0.0421768  | 0.145895  |   0.534637 |            0.430542 |           11 |
-| event_no_verifier   | Energy     |         6 | 0.128003   | 0.24669   |   0.500451 |            0.430542 |           11 |
+| event_no_verifier   | Energy     |         3 | 0.0408602  | 0.14639   |   0.504624 |            0.436885 |           11 |
+| event_no_verifier   | Energy     |         6 | 0.126571   | 0.252061  |   0.484488 |            0.436885 |           11 |
 | event_no_verifier   | Health_AFR |         3 | 0.00494017 | 0.0581549 |   0.514894 |            0.435386 |           11 |
 | event_no_verifier   | Health_AFR |         6 | 0.00813756 | 0.0759016 |   0.505532 |            0.435386 |           11 |
-| event_no_verifier   | Health_US  |         3 | 1.50758    | 0.893252  |   0.604255 |            0.468711 |           11 |
-| event_no_verifier   | Health_US  |         6 | 2.86918    | 1.25994   |   0.628936 |            0.468711 |           11 |
-| event_with_verifier | Energy     |         3 | 0.0265549  | 0.117849  |   0.515613 |            0.430542 |           11 |
-| event_with_verifier | Energy     |         6 | 0.0859415  | 0.20451   |   0.502115 |            0.430542 |           11 |
+| event_no_verifier   | Health_US  |         3 | 1.68965    | 0.950364  |   0.623641 |            0.43007  |           11 |
+| event_no_verifier   | Health_US  |         6 | 3.68458    | 1.41942   |   0.647252 |            0.43007  |           11 |
+| event_with_verifier | Energy     |         3 | 0.0322416  | 0.127799  |   0.504707 |            0.436885 |           11 |
+| event_with_verifier | Energy     |         6 | 0.112179   | 0.236739  |   0.503    |            0.436885 |           11 |
 | event_with_verifier | Health_AFR |         3 | 0.00377074 | 0.0501313 |   0.506383 |            0.435386 |           11 |
 | event_with_verifier | Health_AFR |         6 | 0.00578692 | 0.0622312 |   0.486809 |            0.435386 |           11 |
-| event_with_verifier | Health_US  |         3 | 1.76981    | 1.01262   |   0.644681 |            0.468711 |           11 |
-| event_with_verifier | Health_US  |         6 | 3.29768    | 1.39386   |   0.657872 |            0.468711 |           11 |
-| full_cents_feature  | Energy     |         3 | 0.0265549  | 0.117849  |   0.515613 |            0.430542 |           11 |
-| full_cents_feature  | Energy     |         6 | 0.0859415  | 0.20451   |   0.502115 |            0.430542 |           11 |
+| event_with_verifier | Health_US  |         3 | 1.63425    | 0.988928  |   0.646233 |            0.43007  |           11 |
+| event_with_verifier | Health_US  |         6 | 3.66165    | 1.47761   |   0.669433 |            0.43007  |           11 |
+| full_cents_feature  | Energy     |         3 | 0.0322416  | 0.127799  |   0.504707 |            0.436885 |           11 |
+| full_cents_feature  | Energy     |         6 | 0.112179   | 0.236739  |   0.503    |            0.436885 |           11 |
 | full_cents_feature  | Health_AFR |         3 | 0.00377074 | 0.0501313 |   0.506383 |            0.435386 |           11 |
 | full_cents_feature  | Health_AFR |         6 | 0.00578692 | 0.0622312 |   0.486809 |            0.435386 |           11 |
-| full_cents_feature  | Health_US  |         3 | 1.76981    | 1.01262   |   0.644681 |            0.468711 |           11 |
-| full_cents_feature  | Health_US  |         6 | 3.29768    | 1.39386   |   0.657872 |            0.468711 |           11 |
-| numerical_only      | Energy     |         3 | 0.0208954  | 0.104428  |   0.540989 |            0        |            0 |
-| numerical_only      | Energy     |         6 | 0.0669833  | 0.188324  |   0.514018 |            0        |            0 |
+| full_cents_feature  | Health_US  |         3 | 1.63425    | 0.988928  |   0.646233 |            0.43007  |           11 |
+| full_cents_feature  | Health_US  |         6 | 3.66165    | 1.47761   |   0.669433 |            0.43007  |           11 |
+| numerical_only      | Energy     |         3 | 0.025535   | 0.11482   |   0.516395 |            0        |            0 |
+| numerical_only      | Energy     |         6 | 0.0840365  | 0.208311  |   0.494222 |            0        |            0 |
 
 ## Ablation Study
 
 | method              |      mse |      mae |   event_consistency | observation                            |
 |:--------------------|---------:|---------:|--------------------:|:---------------------------------------|
-| event_no_verifier   | 0.692513 | 0.421604 |            0.443446 | Stage-1 lightweight closed-loop result |
-| event_with_verifier | 0.784056 | 0.442299 |            0.443446 | Stage-1 lightweight closed-loop result |
-| full_cents_feature  | 0.784056 | 0.442299 |            0.443446 | Stage-1 lightweight closed-loop result |
-| numerical_only      | 0.757508 | 0.428059 |            0        | Stage-1 lightweight closed-loop result |
-| persistence         | 0.199053 | 0.191251 |            0        | Stage-1 lightweight closed-loop result |
-| raw_text_embedding  | 1.4824   | 0.627942 |            0        | Stage-1 lightweight closed-loop result |
+| event_no_verifier   | 1.13822  | 0.584425 |            0.433893 | Stage-1 lightweight closed-loop result |
+| event_with_verifier | 1.11673  | 0.595029 |            0.433893 | Stage-1 lightweight closed-loop result |
+| full_cents_feature  | 1.11673  | 0.595029 |            0.433893 | Stage-1 lightweight closed-loop result |
+| numerical_only      | 1.00383  | 0.56513  |            0        | Stage-1 lightweight closed-loop result |
+| persistence         | 0.263071 | 0.239585 |            0        | Stage-1 lightweight closed-loop result |
+| raw_text_embedding  | 3.06214  | 0.958191 |            0        | Stage-1 lightweight closed-loop result |
 
 ## Robustness Study
 
@@ -96,6 +96,81 @@ Forecasting metrics include MSE, MAE, RMSE, MAPE, and directional accuracy. Expl
 |   2028 | Health_US  | event_with_verifier |         6 |     3.32398    |          3.77275    |        3.32398    |  0.135007  |
 |   2028 | Health_AFR | event_with_verifier |         3 |     0.00377075 |          0.00354626 |        0.0037901  | -0.0595335 |
 |   2028 | Health_AFR | event_with_verifier |         6 |     0.00578694 |          0.00531465 |        0.00580452 | -0.0816135 |
+
+## MM-TSFlib Strong Baseline Status
+
+MM-TSFlib was cloned and scanned for available strong time-series models. The repository contains DLinear, PatchTST, iTransformer, TimesNet, TimeMixer, and other model files. In the current local Python environment, `torch` is not installed, so full MM-TSFlib training was not executed in this report. This is recorded as an environment limitation rather than a negative result.
+
+| model                     | available_in_repo   | torch_available   | stage1_status         | note                                                                                  |
+|:--------------------------|:--------------------|:------------------|:----------------------|:--------------------------------------------------------------------------------------|
+| Autoformer                | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| Crossformer               | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| DLinear                   | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| ETSformer                 | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| FEDformer                 | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| FiLM                      | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| FreTS                     | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| Informer                  | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| Koopa                     | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| LightTS                   | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| MICN                      | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+| Nonstationary_Transformer | True                | False             | not_run_missing_torch | MM-TSFlib cloned and model file exists; full training requires torch/GPU environment. |
+
+## Granger-Lite Causal Edge Verification
+
+To strengthen the Augur-lite anchor, I added a lightweight Granger-style F-test over lagged linear regressions. This estimates whether lagged source variables improve prediction of target variables beyond the target's own lags. Single-variable domains such as Health_AFR naturally produce no variable-variable Granger edges.
+
+| source                                                                                                     | target                                                                                                     |   best_lag |   f_stat |     p_value |   effect | significant   | target_is_ot   | domain   |
+|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|-----------:|---------:|------------:|---------:|:--------------|:---------------|:---------|
+| Weekly East Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 | OT                                                                                                         |          1 | 12.0091  | 9.51614e-08 | 0.993089 | True          | True           | Energy   |
+| Weekly Lower Atlantic (PADD 1C) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)   | OT                                                                                                         |          1 | 10.8905  | 4.64762e-07 | 0.989957 | True          | True           | Energy   |
+| Weekly Central Atlantic (PADD 1B) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon) | OT                                                                                                         |          1 |  6.58761 | 0.00020457  | 0.992748 | True          | True           | Energy   |
+| Weekly Midwest All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                    | OT                                                                                                         |          1 |  6.02554 | 0.000450795 | 0.993218 | True          | True           | Energy   |
+| Weekly Rocky Mountain All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)             | OT                                                                                                         |          1 |  4.03295 | 0.00723794  | 0.97667  | True          | True           | Energy   |
+| Weekly West Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 | OT                                                                                                         |          1 |  2.93817 | 0.0322799   | 0.954344 | True          | True           | Energy   |
+| Weekly Gulf Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 | OT                                                                                                         |          1 |  2.74982 | 0.0415939   | 0.986332 | True          | True           | Energy   |
+| OT                                                                                                         | Weekly Lower Atlantic (PADD 1C) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)   |          1 | 42.8106  | 2.84274e-26 | 0.988785 | True          | False          | Energy   |
+| Weekly Midwest All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                    | Weekly Lower Atlantic (PADD 1C) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)   |          1 | 42.2553  | 5.99739e-26 | 0.989721 | True          | False          | Energy   |
+| Weekly Midwest All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                    | Weekly Rocky Mountain All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)             |          1 | 37.7392  | 2.68286e-23 | 0.978953 | True          | False          | Energy   |
+| OT                                                                                                         | Weekly East Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 |          1 | 34.1361  | 3.64087e-21 | 0.993955 | True          | False          | Energy   |
+| Weekly Midwest All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                    | Weekly Gulf Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 |          1 | 33.395   | 1.00423e-20 | 0.989706 | True          | False          | Energy   |
+| OT                                                                                                         | Weekly Central Atlantic (PADD 1B) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon) |          1 | 33.3113  | 1.1262e-20  | 0.995312 | True          | False          | Energy   |
+| Weekly Midwest All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                    | Weekly East Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 |          1 | 32.913   | 1.94418e-20 | 0.991478 | True          | False          | Energy   |
+| OT                                                                                                         | Weekly Rocky Mountain All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)             |          1 | 32.5988  | 2.99208e-20 | 0.985775 | True          | False          | Energy   |
+| Weekly Midwest All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                    | Weekly Central Atlantic (PADD 1B) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon) |          1 | 32.4513  | 3.66343e-20 | 0.988106 | True          | False          | Energy   |
+| Weekly Gulf Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 | Weekly Lower Atlantic (PADD 1C) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)   |          1 | 32.051   | 6.34753e-20 | 0.993253 | True          | False          | Energy   |
+| Weekly Midwest All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                    | Weekly New England (PADD 1A) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)      |          1 | 27.9555  | 1.80308e-17 | 0.990226 | True          | False          | Energy   |
+| OT                                                                                                         | Weekly Gulf Coast All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)                 |          1 | 25.7605  | 3.79362e-16 | 0.984303 | True          | False          | Energy   |
+| OT                                                                                                         | Weekly New England (PADD 1A) All Grades All Formulations Retail Gasoline Prices  (Dollars per Gallon)      |          1 | 25.6391  | 4.49121e-16 | 0.993935 | True          | False          | Energy   |
+
+## GAMETime Verifier Sanity Check
+
+The cloned GAMETime repository does not include the full 1.7M timestamp benchmark data; its README states that the data must be requested or downloaded separately. Therefore, this report does not fabricate GAMETime benchmark numbers. Instead, it records repository data availability and runs a synthetic positive/negative event sanity check through the same verifier code.
+
+| check                             | passed   |    score | note                                                                                                       |
+|:----------------------------------|:---------|---------:|:-----------------------------------------------------------------------------------------------------------|
+| repository_data_availability      | False    | 0        | GAMETime repo clone does not include full benchmark data; README says to request/download data separately. |
+| synthetic_positive_event_verifier | True     | 0.853554 | Positive event followed by target increase.                                                                |
+| synthetic_negative_event_verifier | True     | 0.778997 | Negative event followed by target decrease.                                                                |
+
+## LLM Event Extraction Probe
+
+An OpenAI API key was detected, and a small cached LLM event-extraction probe was attempted on Time-MMD Energy text. The run is deliberately tiny to control cost. In the latest probe, the API call succeeded, but the model returned no conservative structured events for the sampled snippets. The main experiments therefore still use the deterministic rule-based extractor, while the LLM path is now wired and auditable.
+
+```json
+{
+  "domain": "Energy",
+  "target_variable": "OT",
+  "max_rows": 1,
+  "api_key_present": true,
+  "model": "gpt-4o-mini",
+  "attempted": true,
+  "success": true,
+  "llm_calls": 1,
+  "events": [],
+  "error": ""
+}
+```
 
 ## Case Study
 

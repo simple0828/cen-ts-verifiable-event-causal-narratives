@@ -63,6 +63,10 @@ python scripts/07_build_event_graph.py --config configs/exp/main_timemmd.yaml
 python scripts/08_run_event_feature_models.py --config configs/exp/main_timemmd.yaml
 python scripts/09_run_verifier_ablation.py --config configs/exp/ablation_timemmd.yaml
 python scripts/11_run_robustness_tests.py --config configs/exp/robustness_timemmd.yaml
+python scripts/14_run_granger_lite.py --config configs/exp/main_timemmd.yaml
+python scripts/15_run_gametime_sanity.py
+python scripts/16_scan_mmtsflib.py
+python scripts/17_run_llm_event_probe.py --config configs/exp/smoke_test.yaml --max_rows 3
 ```
 
 ## Results
@@ -87,4 +91,3 @@ Please cite the final versions of:
 - Inferring Event Descriptions from Time Series with Language Models.
 - Language in the Flow of Time / Texts as Time Series.
 - Automatic Prompt Optimization / PromptWizard.
-

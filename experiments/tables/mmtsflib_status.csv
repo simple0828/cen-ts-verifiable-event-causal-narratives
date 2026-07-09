@@ -1,0 +1,23 @@
+model,available_in_repo,torch_available,stage1_status,note
+Autoformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+Crossformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+DLinear,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+ETSformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+FEDformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+FiLM,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+FreTS,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+Informer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+Koopa,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+LightTS,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+MICN,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+Nonstationary_Transformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+PatchTST,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+Pyraformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+Reformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+SegRNN,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+TSMixer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+TiDE,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+TimeMixer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+TimesNet,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+Transformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
+iTransformer,True,False,not_run_missing_torch,MM-TSFlib cloned and model file exists; full training requires torch/GPU environment.
