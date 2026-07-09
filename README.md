@@ -75,7 +75,7 @@ The current preliminary report is generated at [reports/experiment_report.md](re
 
 ## Manual GitHub Push
 
-If GitHub CLI is unavailable or unauthenticated:
+If GitHub CLI is unavable or unauthenticated:
 
 ```bash
 git remote add origin https://github.com/simple0828/cen-ts-verifiable-event-causal-narratives.git
