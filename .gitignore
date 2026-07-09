@@ -1,6 +1,8 @@
 data/raw/
 data/processed/
 data/cache/
+external/MM-TSFlib/
+external/PromptWizard/
 experiments/logs/
 experiments/runs/
 *.pt
@@ -15,4 +17,3 @@ __pycache__/
 .pytest_cache/
 .venv/
 *.egg-info/
-
