@@ -1,7 +1,7 @@
 method,mse,mae,event_consistency,observation
-event_no_verifier,0.6925126157648169,0.421604156946285,0.44344585887608845,Stage-1 lightweight closed-loop result
-event_with_verifier,0.7840560128902938,0.4422985677686663,0.44344585887608845,Stage-1 lightweight closed-loop result
-full_cents_feature,0.7840560128902938,0.4422985677686663,0.44344585887608845,Stage-1 lightweight closed-loop result
-numerical_only,0.7575076946185662,0.4280586809858057,0.0,Stage-1 lightweight closed-loop result
-persistence,0.19905263120261474,0.1912513706824247,0.0,Stage-1 lightweight closed-loop result
-raw_text_embedding,1.4824009225448842,0.6279421744838338,0.0,Stage-1 lightweight closed-loop result
+event_no_verifier,1.1382187106446027,0.5844248441794638,0.4338928288881083,Stage-1 lightweight closed-loop result
+event_with_verifier,1.116727845957953,0.5950291108531786,0.4338928288881083,Stage-1 lightweight closed-loop result
+full_cents_feature,1.116727845957953,0.5950291108531786,0.4338928288881083,Stage-1 lightweight closed-loop result
+numerical_only,1.0038347732604063,0.5651297073947944,0.0,Stage-1 lightweight closed-loop result
+persistence,0.2630710487029154,0.23958468707905684,0.0,Stage-1 lightweight closed-loop result
+raw_text_embedding,3.06214403156717,0.9581905719877927,0.0,Stage-1 lightweight closed-loop result
