@@ -1,0 +1,19 @@
+environment:
+  conda_env: tats
+  python_path: "D:/Miniconda/envs/tats/python.exe"
+  hf_home: "D:/huggingface_cache"
+
+tats:
+  model_path: "D:/models/gpt2"
+  pretrained: true
+  local_files_only: true
+  allow_random_fallback: false
+  max_token_length: 256
+  pooling: avg
+  text_emb_dim: 12
+
+training:
+  backbone: iTransformer
+  use_cuda: true
+  gpu: 0
+  seed: 2025

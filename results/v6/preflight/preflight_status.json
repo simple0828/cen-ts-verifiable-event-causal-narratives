@@ -1,0 +1,18 @@
+﻿{
+    "conda_env_ok":  true,
+    "python_path_ok":  true,
+    "gpt2_files_complete":  true,
+    "gpt2_pretrained_loaded":  true,
+    "gpt2_hidden_size":  768,
+    "gpt2_embedding_nonconstant":  true,
+    "cuda_available":  true,
+    "gpu_name":  "NVIDIA GeForce RTX 5060 Ti",
+    "gpu_forward_ok":  true,
+    "tats_import_ok":  true,
+    "backbone":  "iTransformer",
+    "projection_gradient_norm":  58.872016057372093,
+    "prediction_real_vs_zero_max_diff":  0.015337973833084106,
+    "prediction_real_vs_shuffle_max_diff":  0.0078085660934448242,
+    "tests_passed":  true,
+    "p0_status":  "PASS"
+}

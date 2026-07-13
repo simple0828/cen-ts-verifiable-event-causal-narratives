@@ -1,0 +1,144 @@
+﻿P0 environment path audit generated at 2026-07-13T21:07:02.2508413+08:00
+
+=== Get-Command python -All ===
+
+
+Source      : C:\Users\Administrator\AppData\Local\Programs\Python\Python310\python.exe
+Version     : 3.10.150.1013
+CommandType : Application
+Name        : python.exe
+
+
+
+
+
+=== Get-Command pip -All ===
+
+
+Source      : C:\Users\Administrator\AppData\Local\Programs\Python\Python310\Scripts\pip.exe
+Version     : 0.0.0.0
+CommandType : Application
+Name        : pip.exe
+
+
+
+
+
+=== Get-Command hf -All ===
+
+
+Source      : C:\Users\Administrator\AppData\Local\Programs\Python\Python310\Scripts\hf.exe
+Version     : 0.0.0.0
+CommandType : Application
+Name        : hf.exe
+
+
+
+
+
+=== where.exe python ===
+where.exe : INFO: Could not find files for the given pattern(s).
+所在位置 行:18 字符: 34
++ Add-Section 'where.exe python' { where.exe python }
++                                  ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO: Could not...ven pattern(s).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+
+=== where.exe pip ===
+where.exe : INFO: Could not find files for the given pattern(s).
+所在位置 行:19 字符: 31
++ Add-Section 'where.exe pip' { where.exe pip }
++                               ~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO: Could not...ven pattern(s).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+
+=== where.exe hf ===
+where.exe : INFO: Could not find files for the given pattern(s).
+所在位置 行:20 字符: 30
++ Add-Section 'where.exe hf' { where.exe hf }
++                              ~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO: Could not...ven pattern(s).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+
+=== conda info --envs ===
+conda : 无法将“conda”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。
+所在位置 行:21 字符: 35
++ Add-Section 'conda info --envs' { conda info --envs }
++                                   ~~~~~
+    + CategoryInfo          : ObjectNotFound: (conda:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+=== conda run -n tats python --version ===
+conda : 无法将“conda”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。
+所在位置 行:22 字符: 52
++ Add-Section 'conda run -n tats python --version' { conda run -n tats  ...
++                                                    ~~~~~
+    + CategoryInfo          : ObjectNotFound: (conda:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+=== conda run -n tats python executable ===
+conda : 无法将“conda”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。
+所在位置 行:23 字符: 53
++ Add-Section 'conda run -n tats python executable' { conda run -n tats ...
++                                                     ~~~~~
+    + CategoryInfo          : ObjectNotFound: (conda:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+=== conda run -n tats python -m pip --version ===
+conda : 无法将“conda”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。
+所在位置 行:24 字符: 59
++ ... d-Section 'conda run -n tats python -m pip --version' { conda run -n  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (conda:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+=== Test-Path D:/Miniconda/envs/tats/python.exe ===
+True
+
+
+=== D:/Miniconda/envs/tats/python.exe --version ===
+Python 3.11.15
+
+
+=== D:/Miniconda/envs/tats/python.exe executable ===
+D:\Miniconda\envs\tats\python.exe
+
+
+=== D:/Miniconda/envs/tats/python.exe -m pip --version ===
+pip 26.1.2 from D:\Miniconda\envs\tats\Lib\site-packages\pip (python 3.11)
+
+
+
+=== Test-Path D:/Miniconda/Scripts/conda.exe ===
+True
+
+
+=== D:/Miniconda/Scripts/conda.exe info --envs ===
+
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     D:\Miniconda
+Isaaclab                 D:\Miniconda\envs\Isaaclab
+tats                     D:\Miniconda\envs\tats
+
+
+
+=== D:/Miniconda/Scripts/conda.exe run -n tats python executable ===
+D:\Miniconda\envs\tats\python.exe
+

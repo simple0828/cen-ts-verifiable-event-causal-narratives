@@ -14,6 +14,13 @@ experiments/logs/
 experiments/runs/
 artifacts/v5/hf_cache/
 artifacts/v5/text_embeddings/*.npz
+D:/models
+models/
+huggingface_cache/
+.cache/
+artifacts/v6/embeddings/
+configs/v6/*.local.yaml
+*.key
 results/v5/runs/**/checkpoint.pth
 results/v5/runs/**/predictions.npz
 *.pt

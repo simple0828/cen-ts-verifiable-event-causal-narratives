@@ -1,0 +1,41 @@
+{
+  "all_parameters_finite": true,
+  "embedding_shape": [
+    3,
+    768
+  ],
+  "embedding_variance": 57.44138717651367,
+  "embeddings_not_identical": true,
+  "hf_hub_offline": true,
+  "hidden_size": 768,
+  "local_files_only": true,
+  "model_class": "GPT2Model",
+  "model_path": "D:/models/gpt2",
+  "network_requests_allowed": false,
+  "pairwise_cosine_similarity": [
+    [
+      1.000000238418579,
+      0.998711347579956,
+      0.9924818277359009
+    ],
+    [
+      0.998711347579956,
+      1.0,
+      0.9908259510993958
+    ],
+    [
+      0.9924818277359009,
+      0.9908259510993958,
+      1.0000001192092896
+    ]
+  ],
+  "parameter_count": 124439808,
+  "pretrained": true,
+  "random_init": false,
+  "success": true,
+  "texts": [
+    "A major oil producer announced a production cut.",
+    "A severe weather event disrupted regional energy supply.",
+    "No material event was reported."
+  ]
+}

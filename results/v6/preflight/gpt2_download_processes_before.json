@@ -1,0 +1,6 @@
+﻿{
+    "ProcessId":  19732,
+    "ParentProcessId":  17932,
+    "Name":  "powershell.exe",
+    "CommandLine":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-CimInstance Win32_Process | Where-Object { $_.CommandLine -match \u0027hf.*download.*openai-community/gpt2\u0027 } | Select-Object ProcessId,ParentProcessId,Name,CommandLine | ConvertTo-Json -Depth 3 | Set-Content -Encoding UTF8 \u0027results/v6/preflight/gpt2_download_processes_before.json\u0027\""
+}

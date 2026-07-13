@@ -1,0 +1,13 @@
+﻿{
+  "huggingface_hub": true,
+  "matplotlib": true,
+  "numpy": true,
+  "pandas": true,
+  "reformer_pytorch": true,
+  "safetensors": true,
+  "sklearn": true,
+  "sktime": true,
+  "torch": true,
+  "tqdm": true,
+  "transformers": true
+}
