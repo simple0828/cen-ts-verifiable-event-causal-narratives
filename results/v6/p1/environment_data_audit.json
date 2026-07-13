@@ -1,0 +1,48 @@
+{
+  "average_text_length": 484.9243179433368,
+  "constructible_window_count": 15035,
+  "csv_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\third_party\\TaTS\\data\\Environment.csv",
+  "data_path_source": "adapter_third_party_tats_data",
+  "dataset": "Environment",
+  "duplicate_text_count": 13088,
+  "empty_text_count": 14,
+  "end_time": "2023-09-30 00:00:00",
+  "max_text_length": 1558,
+  "numeric_missing_rate": 0.0,
+  "pred_len": 48,
+  "raw_data_modified": false,
+  "same_split_for_all_methods": true,
+  "scaler_fit_split": "train",
+  "seq_len": 24,
+  "split_boundaries": {
+    "model_val": [
+      10673,
+      12199
+    ],
+    "test": [
+      12199,
+      15248
+    ],
+    "train": [
+      0,
+      10673
+    ]
+  },
+  "split_hash": "b80f7a6c5c4ed081e9e7b8255f006a4ead33913ab6c38fb0e8ef9bc2563e6178",
+  "start_time": "1982-01-01 00:00:00",
+  "target_column": "OT",
+  "test_used_for_parameter_selection": false,
+  "text_columns": [
+    "fact",
+    "preds"
+  ],
+  "text_coverage_rate": 0.9990818467995802,
+  "time_frequency_mode": "1 days 00:00:00",
+  "timestamps_unique": true,
+  "total_time_points": 15248,
+  "window_counts": {
+    "model_val": 1455,
+    "test": 2978,
+    "train": 10602
+  }
+}

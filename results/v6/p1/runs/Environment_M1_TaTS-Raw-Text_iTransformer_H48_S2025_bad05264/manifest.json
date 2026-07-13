@@ -1,0 +1,50 @@
+{
+  "attention_modified": false,
+  "backbone": "iTransformer",
+  "backbone_parameter_count": 6343216,
+  "best_epoch": 2,
+  "checkpoint_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1\\runs\\Environment_M1_TaTS-Raw-Text_iTransformer_H48_S2025_bad05264\\best_checkpoint.pth",
+  "completed_epochs": 5,
+  "cuda": "12.8",
+  "dataset": "Environment",
+  "device": "cuda:0",
+  "forecasting_head_modified": false,
+  "gpt2": {
+    "all_parameters_finite": true,
+    "file_manifest_complete": true,
+    "freeze_gpt2": true,
+    "gpt2_config_hash": "0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4",
+    "gpt2_weight_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+    "hidden_size": 768,
+    "local_files_only": true,
+    "model_class": "GPT2Model",
+    "model_path": "D:/models/gpt2",
+    "parameter_count": 124439808,
+    "pretrained": true,
+    "random_init": false
+  },
+  "input_shape_combined_channels": 13,
+  "input_shape_numeric": [
+    32,
+    24,
+    1
+  ],
+  "loss_structure_modified": false,
+  "method": "M1_TaTS-Raw-Text",
+  "official_backbone_file": "third_party/TaTS/models/iTransformer.py",
+  "predictions_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1\\runs\\Environment_M1_TaTS-Raw-Text_iTransformer_H48_S2025_bad05264\\predictions.npz",
+  "python": "3.11.15",
+  "run_id": "Environment_M1_TaTS-Raw-Text_iTransformer_H48_S2025_bad05264",
+  "seed": 2025,
+  "split_hash": "b80f7a6c5c4ed081e9e7b8255f006a4ead33913ab6c38fb0e8ef9bc2563e6178",
+  "targets_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1\\runs\\Environment_M1_TaTS-Raw-Text_iTransformer_H48_S2025_bad05264\\targets.npz",
+  "text_module_parameter_count": 99980,
+  "torch": "2.7.0+cu128",
+  "total_parameter_count": 6443196,
+  "trainable_parameter_count": 6443196,
+  "window_counts": {
+    "model_val": 1455,
+    "test": 2978,
+    "train": 10602
+  }
+}

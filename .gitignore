@@ -19,6 +19,7 @@ models/
 huggingface_cache/
 .cache/
 artifacts/v6/embeddings/
+artifacts/v6/tats_embeddings/
 configs/v6/*.local.yaml
 *.key
 results/v5/runs/**/checkpoint.pth
@@ -26,6 +27,8 @@ results/v5/runs/**/predictions.npz
 *.pt
 *.pth
 *.ckpt
+results/v6/p1/runs/**/best_checkpoint.pth
+results/v6/p1/runs/**/*.npz
 *.pkl
 .env
 wandb/

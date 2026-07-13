@@ -1,0 +1,23 @@
+# P1 Text Counterfactual Diagnostics
+
+- target_std: 23.283823013305664
+- real_vs_zero_max_diff: 40.85115051269531
+- real_vs_zero_mean_diff: 2.6727218627929688
+- real_vs_zero_mean_diff_over_target_std: 0.11478879302740097
+- real_vs_zero_prediction_cosine_similarity: 0.9986650943756104
+- real_vs_zero_sample_change_ratio: 1.0
+- real_vs_shuffle_max_diff: 41.090240478515625
+- real_vs_shuffle_mean_diff: 2.5649423599243164
+- real_vs_shuffle_mean_diff_over_target_std: 0.11015984416007996
+- real_vs_shuffle_prediction_cosine_similarity: 0.9986535310745239
+- real_vs_shuffle_sample_change_ratio: 1.0
+- real_vs_random_max_diff: 46.39973449707031
+- real_vs_random_mean_diff: 2.691248893737793
+- real_vs_random_mean_diff_over_target_std: 0.11558449268341064
+- real_vs_random_prediction_cosine_similarity: 0.9984472990036011
+- real_vs_random_sample_change_ratio: 1.0
+- real_vs_constant_max_diff: 40.8515625
+- real_vs_constant_mean_diff: 2.6727211475372314
+- real_vs_constant_mean_diff_over_target_std: 0.11478875577449799
+- real_vs_constant_prediction_cosine_similarity: 0.9986650943756104
+- real_vs_constant_sample_change_ratio: 1.0

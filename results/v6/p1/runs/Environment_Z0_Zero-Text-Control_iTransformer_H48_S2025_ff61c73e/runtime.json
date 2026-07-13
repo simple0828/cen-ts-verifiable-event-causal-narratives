@@ -1,0 +1,6 @@
+{
+  "cuda_training": true,
+  "device": "cuda:0",
+  "gpu_name": "NVIDIA GeForce RTX 5060 Ti",
+  "runtime_sec": 20.966455936431885
+}

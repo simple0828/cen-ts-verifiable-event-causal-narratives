@@ -1,0 +1,185 @@
+{
+  "M0_Numerical-only": {
+    "combined_input_hash": "65056972226d4dd170ca8f348f28fa7194ed009ebc8b0e25cce46ddc117f9056",
+    "combined_input_shape": [
+      32,
+      24,
+      1
+    ],
+    "gpt2_embedding_hash": "be9587379386ea0ddeb42f99f3706b720da0ae06d93cf292cced6c390899148e",
+    "numeric_input_hash": "65056972226d4dd170ca8f348f28fa7194ed009ebc8b0e25cce46ddc117f9056",
+    "numeric_input_shape": [
+      32,
+      24,
+      1
+    ],
+    "projected_text_all_zero": false,
+    "projected_text_hash": "e21b306dc42fb9489ed9dd3a0f32bdb67a2d2ccd4d6facbf9ff74dd9734ce8a5",
+    "projected_text_nonzero": false,
+    "projected_text_shape": [
+      32,
+      24,
+      0
+    ],
+    "raw_text_hash": "c5c459ef35ac38891452c1ffd66b62193dedaf90f35d18e944d392d28cd15290",
+    "text_embedding_shape": [
+      32,
+      24,
+      768
+    ],
+    "token_ids_hash": "not_saved_full_token_ids_uses_strict_gpt2_tokenizer"
+  },
+  "M1_TaTS-Raw-Text": {
+    "combined_input_hash": "243b8910801a647a0461857bd666f6cc9877624c204fab67f721c13d33d69b60",
+    "combined_input_shape": [
+      32,
+      24,
+      13
+    ],
+    "gpt2_embedding_hash": "be9587379386ea0ddeb42f99f3706b720da0ae06d93cf292cced6c390899148e",
+    "numeric_input_hash": "65056972226d4dd170ca8f348f28fa7194ed009ebc8b0e25cce46ddc117f9056",
+    "numeric_input_shape": [
+      32,
+      24,
+      1
+    ],
+    "projected_text_all_zero": false,
+    "projected_text_hash": "ae81c059847c36d929f97cb0a61019b0e892f8de61cb3633fc9d78e75e18308d",
+    "projected_text_nonzero": true,
+    "projected_text_shape": [
+      32,
+      24,
+      12
+    ],
+    "raw_text_hash": "c5c459ef35ac38891452c1ffd66b62193dedaf90f35d18e944d392d28cd15290",
+    "text_embedding_shape": [
+      32,
+      24,
+      768
+    ],
+    "token_ids_hash": "not_saved_full_token_ids_uses_strict_gpt2_tokenizer"
+  },
+  "S0_Shuffled-Text-Diagnostic": {
+    "combined_input_hash": "2fd9e479331a625b7c3cabaebad752bf58d44af12a45e000e6064873b0d16ee5",
+    "combined_input_shape": [
+      32,
+      24,
+      13
+    ],
+    "gpt2_embedding_hash": "0d2f26e6cc714a76f99dedf5ff2b1bf046ef134c0067a7180a80516894e78b31",
+    "numeric_input_hash": "65056972226d4dd170ca8f348f28fa7194ed009ebc8b0e25cce46ddc117f9056",
+    "numeric_input_shape": [
+      32,
+      24,
+      1
+    ],
+    "projected_text_all_zero": false,
+    "projected_text_hash": "d6c2459135ec6772016ae50abc802712f97f1db9e5e7246e81231890aa9018d9",
+    "projected_text_nonzero": true,
+    "projected_text_shape": [
+      32,
+      24,
+      12
+    ],
+    "raw_text_hash": "ac5d71582d5b6005d99624cf5879c6c446722e9468084cc3a1f3314adeadd980",
+    "text_embedding_shape": [
+      32,
+      24,
+      768
+    ],
+    "token_ids_hash": "not_saved_full_token_ids_uses_strict_gpt2_tokenizer"
+  },
+  "Z0_Zero-Text-Control": {
+    "combined_input_hash": "f9889c2e327bf096998c11cd07ebec45a630e44653e446e5c6e3b97ae9909db5",
+    "combined_input_shape": [
+      32,
+      24,
+      13
+    ],
+    "gpt2_embedding_hash": "be9587379386ea0ddeb42f99f3706b720da0ae06d93cf292cced6c390899148e",
+    "numeric_input_hash": "65056972226d4dd170ca8f348f28fa7194ed009ebc8b0e25cce46ddc117f9056",
+    "numeric_input_shape": [
+      32,
+      24,
+      1
+    ],
+    "projected_text_all_zero": true,
+    "projected_text_hash": "80de85247132fb9c0ba2aad8b055d0995f75aababeea25554e6bbdb1eb8c7d2a",
+    "projected_text_nonzero": false,
+    "projected_text_shape": [
+      32,
+      24,
+      12
+    ],
+    "raw_text_hash": "c5c459ef35ac38891452c1ffd66b62193dedaf90f35d18e944d392d28cd15290",
+    "text_embedding_shape": [
+      32,
+      24,
+      768
+    ],
+    "token_ids_hash": "not_saved_full_token_ids_uses_strict_gpt2_tokenizer"
+  },
+  "embedding_cache": {
+    "m1": {
+      "cache_hit": true,
+      "cache_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\artifacts\\v6\\tats_embeddings\\environment\\M1_TaTS-Raw-Text_7d1a54e661b658f8f2cc0303.npz",
+      "embedding_shape": [
+        15248,
+        768
+      ],
+      "encoding_seconds": 40.66602969169617,
+      "gpt2_weight_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+      "max_token_length": 256,
+      "method": "M1_TaTS-Raw-Text",
+      "pooling": "avg",
+      "text_hash": "4cafb9ed31097ca74851ce1ed0d2fd321da4a9e475793da727f6066eb2748e40",
+      "train_val_test_recorded": true
+    },
+    "s0": {
+      "cache_hit": true,
+      "cache_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\artifacts\\v6\\tats_embeddings\\environment\\S0_Shuffled-Text-Diagnostic_908f95a6540beea82643f799.npz",
+      "embedding_shape": [
+        15248,
+        768
+      ],
+      "encoding_seconds": 51.70558190345764,
+      "gpt2_weight_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+      "max_token_length": 256,
+      "method": "S0_Shuffled-Text-Diagnostic",
+      "pooling": "avg",
+      "text_hash": "ebbeb47672e17a3f8ad3f15809dd90cefa9b7481e34d966d83f78501b54285f4",
+      "train_val_test_recorded": true
+    }
+  },
+  "embedding_statistics": {
+    "mean_norm": 227.0136260986328,
+    "pairwise_cosine_similarity_mean": 0.9985175728797913,
+    "std_norm": 12.695108413696289,
+    "unique_embedding_ratio": 0.17838541666666666,
+    "variance": 67.16938018798828
+  },
+  "gpt2": {
+    "all_parameters_finite": true,
+    "file_manifest_complete": true,
+    "freeze_gpt2": true,
+    "gpt2_config_hash": "0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4",
+    "gpt2_weight_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+    "hidden_size": 768,
+    "local_files_only": true,
+    "model_class": "GPT2Model",
+    "model_path": "D:/models/gpt2",
+    "parameter_count": 124439808,
+    "pretrained": true,
+    "random_init": false
+  },
+  "hard_checks": {
+    "embeddings_nonconstant": true,
+    "m0_shape_differs_from_m1": true,
+    "m1_combined_differs_from_s0": true,
+    "m1_combined_differs_from_z0": true,
+    "m1_projected_text_nonzero": true,
+    "s0_raw_text_hash_differs_from_m1": true,
+    "z0_projected_text_all_zero": true
+  },
+  "sample_count": 32
+}

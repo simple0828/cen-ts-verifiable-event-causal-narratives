@@ -1,0 +1,38 @@
+{
+  "projected_text_stats_by_epoch": [
+    {
+      "epoch": 1,
+      "mean": 0.41802459955215454,
+      "std": 2.24047589302063,
+      "variance": 5.019732475280762
+    },
+    {
+      "epoch": 2,
+      "mean": 0.49072763323783875,
+      "std": 2.437300682067871,
+      "variance": 5.94043493270874
+    },
+    {
+      "epoch": 3,
+      "mean": 0.18460147082805634,
+      "std": 2.0962772369384766,
+      "variance": 4.394378662109375
+    },
+    {
+      "epoch": 4,
+      "mean": -0.015302423387765884,
+      "std": 1.7378385066986084,
+      "variance": 3.020082712173462
+    },
+    {
+      "epoch": 5,
+      "mean": 0.45357534289360046,
+      "std": 1.8904958963394165,
+      "variance": 3.573974609375
+    }
+  ],
+  "projection_grad_nonzero_batches": 1656,
+  "projection_gradient_nonfinite_batches": 4,
+  "projection_gradient_norm_max": 22.168599901940265,
+  "projection_weight_update_norm": 2.6066057682037354
+}
