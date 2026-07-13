@@ -1,0 +1,22 @@
+{
+  "git_commit": "84a12a389d9be829db0bc98a5f1ab009119ae76b",
+  "tats_commit": "a053503674c61c54d101d01d47c9d680288a7c9a",
+  "run_id": "Energy_M5_APO-CEN-TaTS_PatchTST_H3_S2025_0b9f166c",
+  "method": "M5_APO-CEN-TaTS",
+  "backbone": "PatchTST",
+  "seed": 2025,
+  "history": 24,
+  "horizon": 3,
+  "device": "cpu",
+  "python": "3.10.0",
+  "torch": "2.13.0+cpu",
+  "cuda": null,
+  "gpu": "cpu",
+  "start_time": "2026-07-13T15:18:17+0800",
+  "end_time": "2026-07-13T15:18:17+0800",
+  "runtime_sec": 0.10051512718200684,
+  "text_channels_used": true,
+  "official_backbone_imported_from": "third_party/TaTS/models",
+  "checkpoint_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v5\\runs\\Energy_M5_APO-CEN-TaTS_PatchTST_H3_S2025_0b9f166c\\checkpoint.pth",
+  "prediction_path": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v5\\runs\\Energy_M5_APO-CEN-TaTS_PatchTST_H3_S2025_0b9f166c\\predictions.npz"
+}

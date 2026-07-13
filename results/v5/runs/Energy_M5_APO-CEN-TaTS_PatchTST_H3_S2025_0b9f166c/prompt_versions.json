@@ -1,0 +1,5 @@
+{
+  "method": "M5_APO-CEN-TaTS",
+  "prompt_source": "prompts/v5/manual or prompts/v5/apo depending on method",
+  "prompt_hash": "bd5e1823bda1e197"
+}

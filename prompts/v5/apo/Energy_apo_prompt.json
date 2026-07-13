@@ -1,0 +1,7 @@
+{
+  "P_extract": "Extract only grounded, time-stamped factual events with evidence spans copied from input text. Reject forecasts and opinions unless factuality is explicitly marked. Reject forecasts and opinions unless factuality is explicitly marked. Reject forecasts and opinions unless factuality is explicitly marked.",
+  "P_inverse": "Infer only abstract historical series events from the past numeric window; never use future values. Report numeric evidence as slope/change/change_point only. Report numeric evidence as slope/change/change_point only. Report numeric evidence as slope/change/change_point only.",
+  "P_verify": "Score evidence, causal lag relevance, cycle consistency, and lag observability separately. 当前提示在事件影响尚不可观察时过度依赖序列一致性。 当前提示应优先保留与目标变量和预测窗口 lag 相交的事件。 当前提示在事件影响尚不可观察时过度依赖序列一致性。 当前提示应优先保留与目标变量和预测窗口 lag 相交的事件。 当前提示在事件影响尚不可观察时过度依赖序列一致性。 当前提示应优先保留与目标变量和预测窗口 lag 相交的事件。",
+  "P_narrative": "Render only fields present in the event and verifier JSON using the fixed CEN-TaTS narrative template. Do not add causes, entities, or numbers not in verifier JSON. Do not add causes, entities, or numbers not in verifier JSON. Do not add causes, entities, or numbers not in verifier JSON.",
+  "prompt_hash": "21aa67e77f8866bd"
+}

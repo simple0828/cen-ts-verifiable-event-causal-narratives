@@ -1,0 +1,2 @@
+dataset,threshold,AUROC,AUPRC,F1,correct_event_mean_score,wrong_event_mean_score,wrong_keep_rate,wrong_delete_rate
+Energy,0.331625,1.0,1.0,1.0,0.33690517241379303,0.08570360040567951,0.0,0.0

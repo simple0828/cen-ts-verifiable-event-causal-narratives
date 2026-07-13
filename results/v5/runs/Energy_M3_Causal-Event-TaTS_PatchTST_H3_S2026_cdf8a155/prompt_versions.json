@@ -1,0 +1,5 @@
+{
+  "method": "M3_Causal-Event-TaTS",
+  "prompt_source": "prompts/v5/manual or prompts/v5/apo depending on method",
+  "prompt_hash": "e9fb960e2cf4eeac"
+}

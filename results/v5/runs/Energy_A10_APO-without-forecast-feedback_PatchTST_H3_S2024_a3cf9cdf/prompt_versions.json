@@ -1,0 +1,5 @@
+{
+  "method": "A10_APO-without-forecast-feedback",
+  "prompt_source": "prompts/v5/manual or prompts/v5/apo depending on method",
+  "prompt_hash": "dc28c4e97546b2ef"
+}

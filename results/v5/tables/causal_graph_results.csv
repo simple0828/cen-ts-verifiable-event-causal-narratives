@@ -1,0 +1,2 @@
+dataset,candidate_edges,accepted_edges,event_coverage,avg_support,direction_stability,permutation_pass_rate
+Energy,10,0,10,97.2,0.6241546239881659,0.2
