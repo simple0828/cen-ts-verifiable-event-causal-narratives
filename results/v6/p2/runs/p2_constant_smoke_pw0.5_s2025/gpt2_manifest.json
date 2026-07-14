@@ -1,0 +1,9 @@
+{
+  "hidden_size": 768,
+  "llm_path": "D:\\models\\gpt2",
+  "local_files_only": true,
+  "model_class": "GPT2Model",
+  "random_init": false,
+  "weight_file": "D:\\models\\gpt2\\model.safetensors",
+  "weight_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707"
+}

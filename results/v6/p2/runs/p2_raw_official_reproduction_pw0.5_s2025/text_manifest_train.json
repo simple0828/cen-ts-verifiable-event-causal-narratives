@@ -1,0 +1,22 @@
+{
+  "data_path": "Environment.csv",
+  "date_sha256": "776fb254ff2e6d449fae69f1a12a62a203fb631bef83fa672b809ab5b1ba4838",
+  "flag": "train",
+  "length_max": 901,
+  "length_mean": 147.6534245291858,
+  "length_min": 0,
+  "missing_count": 234,
+  "non_empty_rate": 0.9780755176613886,
+  "non_text_identity_sha256": "f0dda8f339513ac804787678695c228327d95adb7dbcdd3df5d59435ccd8fc6a",
+  "numeric_row_count": 10673,
+  "row_count": 10673,
+  "split_border1": 0,
+  "split_border2": 10673,
+  "target_sha256": "7df2f2304cdf86974aafa8422ab2f7b1093e9cae23867de9465235c216015443",
+  "text_column": "fact",
+  "text_mode": "raw",
+  "text_row_count_matches_numeric": true,
+  "text_sha256": "df3a9d85d49f0d2dcc9775f0f5b0033a68612e57f09470d88fe0c5eb8fec7909",
+  "unique_rate": 0.1353883631593741,
+  "window_count": 10602
+}

@@ -1,0 +1,88 @@
+Could not save font_manager cache [Errno 13] Permission denied: 'C:\\Users\\Administrator\\.matplotlib\\fontlist-v3.11.0.json.matplotlib-lock'
+CEN-TaTS explicit text_column=fact is being used for a non-raw smoke run.
+now running on domain p2 model iTransformer 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!overwrite features to 'S' for univariate time series data and dim=1
+Now using seed 2025
+True
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           p2_constant_smoke_pw0.5_s2025Model:              iTransformer        
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          C:\Users\Administrator\Desktop\TS\cen-ts-verifiable-event-causal-narratives\data\v6\p2
+  Data Path:          Environment_constant.csvFeatures:           S                   
+  Target:             OT                  Freq:               d                   
+  Checkpoints:        C:\Users\Administrator\Desktop\TS\cen-ts-verifiable-event-causal-narratives\results\v6\p2\runs\p2_constant_smoke_pw0.5_s2025\checkpoints
+
+[1mForecasting Task[0m
+  Seq Len:            24                  Label Len:          12                  
+  Pred Len:           48                  Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             13                  Dec In:             13                  
+  C Out:              1                   d model:            512                 
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               2048                
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+  Output Attention:   0                   
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                1                   
+  Train Epochs:       1                   Batch Size:         32                  
+  Patience:           5                   Learning Rate:      0.0001              
+  Des:                test                Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+Number of parameters in TS model: 6343216
+Number of parameters in MLP: 74988
+Total number of parameters: 6418204
+Loading weights:   0%|          | 0/76 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 76/76 [00:00<00:00, 12666.07it/s]
+[transformers] [1mGPT2Model LOAD REPORT[0m from: D:\models\gpt2
+Key                                       | Status     |  | 
+------------------------------------------+------------+--+-
+h.{6, 7, 8, 9, 10, 11}.ln_1.bias          | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.mlp.c_fc.bias      | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.ln_2.bias          | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.attn.c_proj.bias   | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.mlp.c_proj.bias    | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.attn.c_attn.weight | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.ln_1.weight        | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.ln_2.weight        | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.mlp.c_proj.weight  | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.mlp.c_fc.weight    | UNEXPECTED |  | 
+h.{6, 7, 8, 9, 10, 11}.attn.c_proj.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+>>>>>>>start training : long_term_forecast_p2_constant_smoke_pw0.5_s2025_iTransformer_custom_ftS_sl24_ll12_pl48_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_test_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 10602
+val 1479
+test 3002
+	iters: 100, epoch: 1 | loss: 0.6877187
+	speed: 0.0126s/iter; left time: 2.9327s
+	iters: 200, epoch: 1 | loss: 0.7081665
+	speed: 0.0116s/iter; left time: 1.5328s
+	iters: 300, epoch: 1 | loss: 0.5542942
+	speed: 0.0133s/iter; left time: 0.4266s
+Epoch: 1 cost time: 4.172913312911987
+Epoch: 1, Steps: 331 | Train Loss: 0.7107000 Vali Loss: 0.3124959 Test Loss (MSE): 0.2714346 Test MAE: 0.3705487
+Validation loss decreased (inf --> 0.312496).  Saving model ...
+>>>>>>>testing : long_term_forecast_p2_constant_smoke_pw0.5_s2025_iTransformer_custom_ftS_sl24_ll12_pl48_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 3002
+loading model
+test shape: (93, 32, 48, 1) (93, 32, 48, 1)
+test shape: (2976, 48, 1) (2976, 48, 1)
+mse:0.27143460512161255, mae:0.37054869532585144

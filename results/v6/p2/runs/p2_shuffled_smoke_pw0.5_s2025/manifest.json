@@ -1,0 +1,14 @@
+{
+  "event_cache_path": null,
+  "llm_path": "D:/models/gpt2",
+  "prior_weight": 0.5,
+  "prompt_version": "p2_minimal_fork_v1",
+  "prompt_weight": 0.5,
+  "record_input_hashes": true,
+  "run_name": "p2_shuffled_smoke_pw0.5_s2025",
+  "stage": "P2",
+  "strict_local_llm": true,
+  "text_column": "fact",
+  "text_mode": "shuffled",
+  "text_variant_manifest": null
+}

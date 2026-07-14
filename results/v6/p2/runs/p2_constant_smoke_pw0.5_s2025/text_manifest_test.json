@@ -1,0 +1,22 @@
+{
+  "data_path": "Environment_constant.csv",
+  "date_sha256": "da28a39ce01ea565be7346bd6074f9d836e6bc8bdc1fdfcc8d3851b6265f9e3f",
+  "flag": "test",
+  "length_max": 25,
+  "length_mean": 25.0,
+  "length_min": 25,
+  "missing_count": 0,
+  "non_empty_rate": 1.0,
+  "non_text_identity_sha256": "f0dda8f339513ac804787678695c228327d95adb7dbcdd3df5d59435ccd8fc6a",
+  "numeric_row_count": 3073,
+  "row_count": 3073,
+  "split_border1": 12175,
+  "split_border2": 15248,
+  "target_sha256": "e163932040f5739557085408555ef8b5b26b68ca55a34c35f09d8289faedb1ba",
+  "text_column": "fact",
+  "text_mode": "constant",
+  "text_row_count_matches_numeric": true,
+  "text_sha256": "f3c11d8107d4c74a6f8208b9cd65ef82bbaadabf07f28aa4d95255754a1b9541",
+  "unique_rate": 0.0003254149040026033,
+  "window_count": 3002
+}

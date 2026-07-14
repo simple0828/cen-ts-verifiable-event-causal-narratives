@@ -1,0 +1,8 @@
+{
+  "dataset_csv": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\third_party\\TaTS\\data\\Environment.csv",
+  "dataset_sha256": "f8fce652d148ecddf251925023874933aa52c9bbc9041b35045340fa7ffa7f08",
+  "prior_weight": 0.5,
+  "text_column": "fact",
+  "text_mode": "raw",
+  "train_epochs": 5
+}

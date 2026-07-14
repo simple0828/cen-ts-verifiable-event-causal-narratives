@@ -20,8 +20,11 @@ huggingface_cache/
 .cache/
 artifacts/v6/embeddings/
 artifacts/v6/tats_embeddings/
+artifacts/v6/text_embeddings/
+artifacts/v6/llm_cache/
 configs/v6/*.local.yaml
 *.key
+checkpoints/
 results/v5/runs/**/checkpoint.pth
 results/v5/runs/**/predictions.npz
 *.pt
@@ -29,6 +32,13 @@ results/v5/runs/**/predictions.npz
 *.ckpt
 results/v6/p1/runs/**/best_checkpoint.pth
 results/v6/p1/runs/**/*.npz
+results/v6/p1b_official_tats/checkpoints/
+results/v6/p1b_official_tats/results/
+results/v6/p1b_official_tats/test_results/
+results/v6/p2/runs/**/checkpoints/
+results/v6/p2/runs/**/results/
+results/v6/p2/runs/**/test_results/
+results/v6/p2/runs/**/*.npy
 *.pkl
 .env
 wandb/

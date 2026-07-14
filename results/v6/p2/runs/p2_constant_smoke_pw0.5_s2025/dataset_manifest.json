@@ -1,0 +1,8 @@
+{
+  "dataset_csv": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\data\\v6\\p2\\Environment_constant.csv",
+  "dataset_sha256": "fe4cb557f9ef3908350ca3c198d929877e5ac3dcb381f531bee37ada3956a1d6",
+  "prior_weight": 0.5,
+  "text_column": "fact",
+  "text_mode": "constant",
+  "train_epochs": 1
+}
