@@ -14,7 +14,6 @@ from .text_modes import TextMode, parse_text_mode
 
 CONSTANT_TEXT = "No information available."
 UNIMPLEMENTED_MODES = {
-    TextMode.EVENT,
     TextMode.CAUSAL_EVENT,
     TextMode.VERIFIED_EVENT,
     TextMode.APO_EVENT,
@@ -79,9 +78,10 @@ def build_text_variant(
     text_column: str,
     seed: int = 2025,
     manifest_path: Path | None = None,
+    input_jsonl: Path | None = None,
 ) -> dict[str, Any]:
     text_mode = parse_text_mode(mode)
-    if text_mode in UNIMPLEMENTED_MODES:
+    if text_mode in UNIMPLEMENTED_MODES or (text_mode == TextMode.EVENT and input_jsonl is None):
         raise NotImplementedError(f"text mode {text_mode.value!r} is reserved for a later stage.")
 
     df = pd.read_csv(source_csv)
@@ -111,17 +111,43 @@ def build_text_variant(
                 {"split": split_name, "target_row": int(dst), "source_row": int(src)}
                 for dst, src in zip(split_index, shuffled_index)
             )
+    elif text_mode == TextMode.EVENT:
+        event_rows: dict[int, dict[str, Any]] = {}
+        assert input_jsonl is not None
+        with Path(input_jsonl).open("r", encoding="utf-8") as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                item = json.loads(line)
+                row_id = int(item["source_row_id"])
+                if row_id in event_rows:
+                    raise ValueError(f"duplicate source_row_id in event input: {row_id}")
+                event_rows[row_id] = item
+        df[text_column] = ""
+        df["event_count"] = 0
+        df["extraction_status"] = "not_processed"
+        df["source_text_hash"] = ""
+        df["prompt_version"] = ""
+        for row_id, item in event_rows.items():
+            if row_id < 0 or row_id >= len(df):
+                raise ValueError(f"event row outside source CSV: {row_id}")
+            df.at[row_id, text_column] = str(item.get("event_fact", ""))
+            df.at[row_id, "event_count"] = int(item.get("event_count", 0))
+            df.at[row_id, "extraction_status"] = str(item.get("extraction_status", "failed"))
+            df.at[row_id, "source_text_hash"] = str(item.get("source_text_hash", ""))
+            df.at[row_id, "prompt_version"] = str(item.get("prompt_version", ""))
     else:
         raise NotImplementedError(f"text mode {text_mode.value!r} is reserved for a later stage.")
 
     changed_columns = [col for col in df.columns if col not in before.columns or not df[col].equals(before[col])]
-    allowed_changed = {text_column}
+    allowed_changed = {text_column, "event_count", "extraction_status", "source_text_hash", "prompt_version"}
     if set(changed_columns) - allowed_changed:
         raise AssertionError(f"Only {text_column!r} may change, but changed columns were {changed_columns}.")
 
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(output_csv, index=False)
-    non_text_identity_after = frame_hash(df[[col for col in df.columns if col != text_column]])
+    original_non_text_columns = [col for col in before.columns if col != text_column]
+    non_text_identity_after = frame_hash(df[original_non_text_columns])
     manifest = {
         "mode": text_mode.value,
         "source_csv": str(source_csv),
@@ -134,6 +160,7 @@ def build_text_variant(
         "source_non_text_identity_sha256": non_text_identity_before,
         "output_non_text_identity_sha256": non_text_identity_after,
         "non_text_columns_identical": non_text_identity_before == non_text_identity_after,
+        "pilot_processed_rows": len(event_rows) if text_mode == TextMode.EVENT else 0,
         "changed_columns": changed_columns,
         "split_ranges": {key: [start, end] for key, (start, end) in split_ranges(len(df)).items()},
         "permutation_mapping": permutation_mapping,

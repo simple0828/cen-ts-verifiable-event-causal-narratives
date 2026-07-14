@@ -1,0 +1,31 @@
+{
+  "all_source_text_hashes_unique": true,
+  "coverage": {
+    "background_candidates": 12,
+    "date_segments": [
+      "early",
+      "late",
+      "middle"
+    ],
+    "forecast_language": 17,
+    "length_bins": [
+      "long",
+      "medium",
+      "short"
+    ],
+    "multiple_dates": 12,
+    "multiple_sources": 16
+  },
+  "official_test_rows": 0,
+  "official_validation_rows": 0,
+  "requested": {
+    "prompt_dev": 40,
+    "train_core": 160
+  },
+  "seed": 2026,
+  "selected": {
+    "prompt_dev": 40,
+    "total": 200,
+    "train_core": 160
+  }
+}

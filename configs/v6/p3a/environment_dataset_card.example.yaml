@@ -1,0 +1,8 @@
+dataset_name: Environment
+domain: environment
+target_column: OT
+target_description: Air Quality Index
+target_unit: AQI index points
+frequency: daily
+target_semantics_status: resolved
+source: Local Time-MMD DescriptionOfOT.png and numerical/Environment/Environment.csv

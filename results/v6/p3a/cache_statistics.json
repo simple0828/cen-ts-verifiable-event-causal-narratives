@@ -1,0 +1,6 @@
+{
+  "cache_directory": "artifacts/v6/llm_cache/event_extractor",
+  "cache_hits": 2,
+  "cache_misses": 52,
+  "corrupt_entries": 0
+}

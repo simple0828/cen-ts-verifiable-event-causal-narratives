@@ -1,0 +1,60 @@
+{
+  "llm_allowed_splits": [
+    "train_core",
+    "prompt_dev"
+  ],
+  "official_test_calls": 0,
+  "official_validation_calls": 0,
+  "row_count": 15248,
+  "split_hash": "e603dbde7d2e3e6bea3c127b82464557d4d417f4ebcbc0e4ef446b2fe7fe9b46",
+  "splits": {
+    "official_test": {
+      "date_range": [
+        "2015-05-27",
+        "2023-09-30"
+      ],
+      "index_range": [
+        12199,
+        15248
+      ],
+      "row_count": 3049,
+      "text_hash": "9252a434f45e90179544b7d4f06b2903fed5bee15c398fc22e77bb62cd6c6d06"
+    },
+    "official_validation": {
+      "date_range": [
+        "2011-03-23",
+        "2015-05-26"
+      ],
+      "index_range": [
+        10673,
+        12199
+      ],
+      "row_count": 1526,
+      "text_hash": "9e9dd8483c3c30060b8a8d91386dc5dfa6a180fac5c2a124e336cb14c6bec5e6"
+    },
+    "prompt_dev": {
+      "date_range": [
+        "2006-11-03",
+        "2011-03-22"
+      ],
+      "index_range": [
+        9072,
+        10673
+      ],
+      "row_count": 1601,
+      "text_hash": "d15de037f520688ba58a58050b6bc235caa98f4f56470a8d94d4a792b4596b54"
+    },
+    "train_core": {
+      "date_range": [
+        "1982-01-01",
+        "2006-11-02"
+      ],
+      "index_range": [
+        0,
+        9072
+      ],
+      "row_count": 9072,
+      "text_hash": "e60e19cf642dc026fb48901a3600200b31091935991a5da37ad4ab054771d658"
+    }
+  }
+}

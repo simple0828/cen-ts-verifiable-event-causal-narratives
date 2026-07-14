@@ -23,6 +23,9 @@ artifacts/v6/tats_embeddings/
 artifacts/v6/text_embeddings/
 artifacts/v6/llm_cache/
 configs/v6/*.local.yaml
+configs/v6/p3a/*.local.yaml
+data/v6/p3a/
+results/v6/p3a/pilot_extractions_raw.jsonl
 *.key
 checkpoints/
 results/v5/runs/**/checkpoint.pth

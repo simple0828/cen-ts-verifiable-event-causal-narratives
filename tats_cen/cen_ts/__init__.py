@@ -1,6 +1,7 @@
 from .schemas import (
     CausalEdge,
     EventRecord,
+    EventExtractionResult,
     InverseEventRecord,
     NarrativeRecord,
     PromptVersion,
@@ -12,6 +13,7 @@ from .text_modes import TextMode, default_text_column_for_mode, resolve_text_col
 __all__ = [
     "CausalEdge",
     "EventRecord",
+    "EventExtractionResult",
     "InverseEventRecord",
     "NarrativeRecord",
     "PromptVersion",

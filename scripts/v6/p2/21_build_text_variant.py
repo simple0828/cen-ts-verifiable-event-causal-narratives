@@ -24,8 +24,6 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=2025)
     parser.add_argument("--manifest_path", required=True)
     args = parser.parse_args()
-    if args.input_jsonl:
-        raise NotImplementedError("JSONL event inputs are reserved for a later P2+ stage.")
     manifest = build_text_variant(
         source_csv=Path(args.source_csv),
         output_csv=Path(args.output_csv),
@@ -33,6 +31,7 @@ def main() -> None:
         text_column=args.text_column,
         seed=args.seed,
         manifest_path=Path(args.manifest_path),
+        input_jsonl=Path(args.input_jsonl) if args.input_jsonl else None,
     )
     print(json.dumps({k: manifest[k] for k in ["mode", "output_csv", "output_sha256", "non_text_columns_identical"]}, indent=2))
 
