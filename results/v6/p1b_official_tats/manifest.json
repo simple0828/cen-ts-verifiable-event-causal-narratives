@@ -1,0 +1,109 @@
+{
+  "adapter_comparison": {
+    "adapter_parity": "FAIL",
+    "adapter_parity_reasons": [
+      "P1b official data_loader uses llm_model.get_input_embeddings()(input_ids); P1 adapter pooled GPT-2 model hidden states.",
+      "P1b official projection is Linear-ReLU-Linear-ReLU-Dropout; P1 adapter uses a different projection block.",
+      "P1b official train/val/test windows follow TaTS overlapping border1s and DataLoader drop_last=True; P1 adapter uses non-overlapping split windows and drop_last=False.",
+      "P1b official forecasting loop mixes outputs with prior_history_avg using prior_weight=0.5; P1 adapter did not use this official prior mix.",
+      "P1b official decoder input includes label_len target history and text decoder channels; P1 adapter used a simplified zero decoder input."
+    ],
+    "available": true,
+    "official_to_p1_alignment": {
+      "aligned_windows": 2952,
+      "official_offset": 24,
+      "reason": "Official TaTS test split starts seq_len points before the test border; P1 adapter starts inside the test split."
+    },
+    "p1_adapter_run_id": "Environment_M1_TaTS-Raw-Text_iTransformer_H48_S2025_bad05264",
+    "p1_adapter_test_mse_unscaled": 561.3306528118445,
+    "prediction_correlation_scaled_aligned": 0.573463457072815,
+    "prediction_mean_absolute_difference_scaled_aligned": 0.19655349850654602,
+    "target_mean_absolute_difference_scaled_aligned": 8.024922237837018e-08
+  },
+  "get_input_embeddings_call_count": 97,
+  "official_result_dir": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\results\\long_term_forecast_data_2025_24_48_fullLLM_p1b_iTransformer_custom_ftS_sl24_ll12_pl48_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0",
+  "outputs": {
+    "command": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\command.txt",
+    "manifest": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\manifest.json",
+    "metrics": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\metrics.json",
+    "predictions": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\predictions.npy",
+    "resolved_args": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\resolved_args.json",
+    "train_log": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\train.log",
+    "upstream_commit": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\upstream_commit.txt",
+    "upstream_diff": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\results\\v6\\p1b_official_tats\\upstream_diff.patch"
+  },
+  "prediction_shape": [
+    2976,
+    48,
+    1
+  ],
+  "preflight": {
+    "cuda": true,
+    "environment_csv_exists": true,
+    "fact_column_exists": true,
+    "gpt2_model_class": "GPT2Model",
+    "gpt2_model_path": "D:\\models\\gpt2",
+    "model": "iTransformer",
+    "padding_mask_shape": [
+      2,
+      4,
+      768
+    ],
+    "padding_mask_valid_count_min": 3.0,
+    "pool_type": "avg",
+    "pooled_shape": [
+      2,
+      768
+    ],
+    "random_init": false,
+    "uses_get_input_embeddings_precheck": [
+      2,
+      4,
+      768
+    ]
+  },
+  "runtime_sec": 21.81119155883789,
+  "setting": "long_term_forecast_data_2025_24_48_fullLLM_p1b_iTransformer_custom_ftS_sl24_ll12_pl48_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0",
+  "split_counts": {
+    "border1s": [
+      0,
+      10649,
+      12175
+    ],
+    "border2s": [
+      10673,
+      12199,
+      15248
+    ],
+    "dataset_window_counts": {
+      "test": 3002,
+      "train": 10602,
+      "val": 1479
+    },
+    "drop_last_used_window_counts": {
+      "test": 2976,
+      "train": 10592,
+      "val": 1472
+    },
+    "n": 15248,
+    "num_test": 3049,
+    "num_train": 10673,
+    "num_val": 1526
+  },
+  "stage": "P1b",
+  "status": "PASS",
+  "target_shape": [
+    2976,
+    48,
+    1
+  ],
+  "upstream_commit": "a053503674c61c54d101d01d47c9d680288a7c9a",
+  "upstream_diff_empty": true,
+  "upstream_status": "On branch main\nYour branch is up to date with 'origin/main'.\n\nnothing to commit, working tree clean\n",
+  "upstream_status_summary": "clean",
+  "wrapper_patch": {
+    "local_files_only": true,
+    "network_fallback_forbidden": true,
+    "patched_openai_community_gpt2_to": "D:\\models\\gpt2"
+  }
+}

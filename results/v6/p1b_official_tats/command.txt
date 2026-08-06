@@ -1,0 +1,4 @@
+PowerShell:
+D:/Miniconda/envs/tats/python.exe scripts/v6/14_run_p1b_exact_official_tats.py
+
+Official Bash source converted from third_party/TaTS/scripts/main_forecast.sh; GPT-2 loading is redirected strictly to D:/models/gpt2 by wrapper monkeypatch.
