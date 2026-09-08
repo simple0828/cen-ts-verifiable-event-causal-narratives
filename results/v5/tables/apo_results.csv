@@ -1,4 +1,0 @@
-dataset,score,token_cost,prompt_hash,round,candidate_count,llm_calls,api_retries
-Energy,1.96,86,03c8d59b0e30b2ee,0,3,0,0
-Energy,2.2,116,4f9e1b58a94ad606,1,9,0,0
-Energy,2.44,146,21aa67e77f8866bd,2,9,0,0

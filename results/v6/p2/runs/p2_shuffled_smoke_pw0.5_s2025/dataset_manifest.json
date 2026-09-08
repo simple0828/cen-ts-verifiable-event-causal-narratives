@@ -1,8 +1,0 @@
-{
-  "dataset_csv": "C:\\Users\\Administrator\\Desktop\\TS\\cen-ts-verifiable-event-causal-narratives\\data\\v6\\p2\\Environment_shuffled.csv",
-  "dataset_sha256": "b45dfd8c43a05449b575ea4a20afb830bc7de041c5532f03b4ff040f3cdf497d",
-  "prior_weight": 0.5,
-  "text_column": "fact",
-  "text_mode": "shuffled",
-  "train_epochs": 1
-}

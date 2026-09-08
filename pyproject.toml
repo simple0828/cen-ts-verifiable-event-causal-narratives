@@ -8,26 +8,26 @@ version = "0.1.0"
 description = "Verifiable causal event narratives for text-paired time series forecasting"
 requires-python = ">=3.10"
 dependencies = [
-  "numpy>=1.23",
-  "pandas>=1.5",
-  "scikit-learn>=1.2",
-  "scipy>=1.9",
-  "pyyaml>=6.0",
-  "matplotlib>=3.6",
+  "numpy==2.4.6",
+  "pandas==2.3.3",
+  "scikit-learn==1.7.2",
+  "scipy==1.17.1",
+  "pyyaml==6.0.3",
+  "matplotlib==3.11.0",
 ]
 
 [project.optional-dependencies]
 tats = [
-  "torch>=2.7",
-  "transformers>=4.40,<6",
-  "huggingface-hub>=0.23",
-  "safetensors>=0.4",
-  "reformer-pytorch>=1.4",
-  "einops>=0.8",
-  "sktime>=0.29",
-  "tqdm>=4.65",
+  "torch==2.7.0",
+  "transformers==5.13.1",
+  "huggingface-hub==1.23.0",
+  "safetensors==0.8.0",
+  "reformer-pytorch==1.4.4",
+  "einops==0.8.2",
+  "sktime==1.0.1",
+  "tqdm==4.68.4",
 ]
-dev = ["pytest>=7.0"]
+dev = ["pytest==9.1.1"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -37,7 +37,7 @@ namespaces = false
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
-norecursedirs = ["archive", "vendor", "third_party"]
+norecursedirs = ["third_party"]
 markers = [
   "integration: requires local GPT-2 weights and/or CUDA (skips if unavailable)",
 ]

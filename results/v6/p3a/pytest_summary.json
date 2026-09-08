@@ -1,7 +1,0 @@
-{
-  "command": "D:/Miniconda/envs/tats/python.exe -m pytest tests/v6 -q",
-  "passed": 56,
-  "failed": 0,
-  "duration_seconds": 9.87,
-  "tests_passed": true
-}

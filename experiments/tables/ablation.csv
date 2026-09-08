@@ -1,7 +1,0 @@
-method,mse,mae,event_consistency,observation
-event_no_verifier,1.1382187106446027,0.5844248441794638,0.4338928288881083,Stage-1 lightweight closed-loop result
-event_with_verifier,1.116727845957953,0.5950291108531786,0.4338928288881083,Stage-1 lightweight closed-loop result
-full_cents_feature,1.116727845957953,0.5950291108531786,0.4338928288881083,Stage-1 lightweight closed-loop result
-numerical_only,1.0038347732604063,0.5651297073947944,0.0,Stage-1 lightweight closed-loop result
-persistence,0.2630710487029154,0.23958468707905684,0.0,Stage-1 lightweight closed-loop result
-raw_text_embedding,3.06214403156717,0.9581905719877927,0.0,Stage-1 lightweight closed-loop result

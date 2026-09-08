@@ -1,2 +1,0 @@
-epoch,steps,train_loss,vali_loss,test_mse,test_mae
-1,331,0.8259448,0.3460086,0.2971444,0.392548

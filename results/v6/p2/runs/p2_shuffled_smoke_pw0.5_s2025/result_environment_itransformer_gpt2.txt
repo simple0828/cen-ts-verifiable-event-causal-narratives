@@ -1,3 +1,0 @@
-long_term_forecast_p2_shuffled_smoke_pw0.5_s2025_iTransformer_custom_ftS_sl24_ll12_pl48_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_test_0  
-mse:0.2714632451534271, mae:0.37074920535087585, rmse:0.5210213661193848, mape:1.1488178968429565, mspe:20.86555290222168
-

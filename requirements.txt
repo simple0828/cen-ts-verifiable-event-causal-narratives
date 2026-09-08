@@ -1,2 +1,0 @@
-# Install the desired CPU/CUDA build of torch first; no machine-specific paths.
--e .[tats,dev]

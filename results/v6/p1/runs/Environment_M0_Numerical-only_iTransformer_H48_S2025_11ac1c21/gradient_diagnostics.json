@@ -1,7 +1,0 @@
-{
-  "projected_text_stats_by_epoch": [],
-  "projection_grad_nonzero_batches": 0,
-  "projection_gradient_nonfinite_batches": 0,
-  "projection_gradient_norm_max": 0.0,
-  "projection_weight_update_norm": 0.0
-}

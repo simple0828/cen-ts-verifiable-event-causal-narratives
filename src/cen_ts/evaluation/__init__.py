@@ -1,1 +1,1 @@
-"""Forecast metrics retained for the v6 P1 runtime."""
+"""Forecast evaluation and published-result verification."""

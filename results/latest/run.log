@@ -1,0 +1,11 @@
+experiment=cen_tats_environment_baseline
+source_commit=2bd8b526cf5d0069da842628382847d9680987df
+upstream_tats_commit=a053503674c61c54d101d01d47c9d680288a7c9a
+dataset=Environment target=OT seed=2025 train_windows=10602 val_windows=1479 test_windows=3002
+model=iTransformer parameters=6418204 prior_weight=0.5 epochs=5 batch_size=32 learning_rate=0.0001
+epoch=1 train_loss=0.7109938 val_loss=0.3127179 test_mse=0.2713896 test_mae=0.3706869
+epoch=2 train_loss=0.7009331 val_loss=0.3155992 test_mse=0.2696501 test_mae=0.3746452
+epoch=3 train_loss=0.6928100 val_loss=0.3164206 test_mse=0.2688828 test_mae=0.3765648
+epoch=4 train_loss=0.6843780 val_loss=0.3134673 test_mse=0.2668724 test_mae=0.3748830
+epoch=5 train_loss=0.6785769 val_loss=0.3083597 test_mse=0.2654481 test_mae=0.3698953
+status=PASS parity=PASS paid_llm_calls=0

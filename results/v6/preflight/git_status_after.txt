@@ -1,8 +1,0 @@
-﻿ M .gitignore
-?? configs/v6/
-?? prompt/
-?? reports/v6/
-?? results/v6/
-?? scripts/v6/
-?? src/cen_tats/runtime/
-?? tests/v6/

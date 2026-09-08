@@ -1,2 +1,0 @@
-"""Event consistency verification utilities."""
-

@@ -1,0 +1,27 @@
+{
+  "experiment": "cen_tats_environment_baseline",
+  "status": "PASS",
+  "dataset": "Environment",
+  "target": "OT",
+  "seed": 2025,
+  "prediction_shape": [2976, 48, 1],
+  "normalized": {
+    "MAE": 0.36989524960517883,
+    "MAPE": 1.1055256128311157,
+    "MSE": 0.26544812321662903,
+    "MSPE": 19.349233627319336,
+    "RMSE": 0.515216588973999
+  },
+  "original_scale": {
+    "MAE": 15.501420974731445,
+    "MSE": 466.1923828125,
+    "RMSE": 21.591487884521484
+  },
+  "parity": {
+    "forward_max_abs_diff": 0.0,
+    "loss_abs_diff": 0.0,
+    "gradient_max_abs_diff": 0.0,
+    "prediction_correlation": 1.0
+  },
+  "checkpoint_sha256": "b1e7f0e8e0d3add35e1d8f6f0f3e3563d1c7e9db18aba1c6ba94df0c2ce4b755"
+}

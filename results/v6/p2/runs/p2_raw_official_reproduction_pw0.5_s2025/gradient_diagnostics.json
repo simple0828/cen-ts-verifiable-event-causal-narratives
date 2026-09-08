@@ -1,7 +1,0 @@
-{
-  "forward_max_abs_diff": 0.0,
-  "gradient_max_abs_diff": 0.0,
-  "loss_abs_diff": 0.0,
-  "run_id": "p2_raw_official_reproduction_pw0.5_s2025",
-  "source": "p1b_parity.json"
-}

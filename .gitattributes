@@ -1,2 +1,2 @@
 # Preserve upstream model bytes, including CRLF and original whitespace, for SHA audits.
-vendor/tats/models/*.py -text -whitespace
+third_party/tats/models/*.py -text -whitespace

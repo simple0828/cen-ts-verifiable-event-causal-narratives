@@ -1,140 +1,145 @@
 # CEN-TS
 
-CEN-TS v6 研究将文本转换为可验证事件叙述后输入 TaTS 的预测流程。
-当前活跃实现为 P2 文本变体与预测适配、P3A 事件抽取 pilot，以及 v6 P0/P1 检查与运行模块。
-本次目录重构以 `feature/cen-event-extractor-pilot-v6` 的 `1a7d341` 为基线，不改变预测计算、训练协议、提示词、数据划分或既有实验产物。
+## 1. Project Goal
 
-## 目录与唯一入口
+CEN-TS studies whether grounded event descriptions can make text-paired time-series forecasting more accurate and auditable. The repository contains the reproducible Environment baseline, the current event-extraction implementation, and only the artifacts needed to verify the latest valid result.
 
-统一从仓库根目录运行 **`python scripts/run.py <stage> [参数]`**。
-入口使用当前 `sys.executable` 启动对应的 `scripts/v6/` 阶段脚本，并将工作目录固定到仓库根目录。
-可用阶段见 `python scripts/run.py --help`，阶段参数见例如 `python scripts/run.py p2-run --help`。
+## 2. Method Overview
 
-| 路径 | 职责 |
-| --- | --- |
-| `src/cen_ts/` | 唯一业务包：事件 schema、抽取、缓存、校验、叙述、文本变体和 v6 runtime |
-| `vendor/tats/` | 固定版本 TaTS 预测源码及已有最小适配；内部保留上游 `models/layers/exp/utils` import 约定 |
-| `scripts/` | 统一调度入口和阶段运行脚本 |
-| `configs/v6/`、`tests/` | 当前配置、离线回归和本地模型集成检查 |
-| `archive/legacy/` | 不再被 v6 引用的旧包、脚本、配置、测试和旧 README；不安装、不默认收集测试 |
-| `third_party/TaTS/` | 原版只读对照，用于源码审计及 P1b/P2 等价性比较 |
-| `prompts/`、`data/`、`artifacts/` | 提示词、原有数据及本地缓存，路径保留 |
-| `results/`、`reports/` | 原有实验输出，路径与历史内容保留 |
+The retained baseline follows TaTS: daily numeric observations and their same-timestamp text are encoded by an iTransformer and a frozen local GPT-2 text channel, then combined for 48-step forecasting. Event extraction is a separate, strict-JSON preprocessing stage. Its prompt and schema live in `src/cen_ts/events/`; extraction is restricted to the supplied source text and to the training split. The published baseline algorithm, chronological split, seed, hyperparameters, and metric definitions are unchanged.
 
-从旧 `src/cen_tats/` 迁入的模块仅有 `runtime/` 和 `evaluation/forecast_metrics.py`，它们仍被 v6 入口或测试引用；
-`src/cents/` 无 v6 引用，已完整归档。历史包不再放入 Python 搜索路径。
+## 3. Repository Layout
 
-## 环境准备
+```text
+.
+├── configs/
+│   ├── baseline.yaml
+│   └── event_extraction.yaml
+├── data/
+│   ├── raw/
+│   └── processed/Environment.csv
+├── scripts/
+│   ├── prepare_data.py
+│   ├── train_baseline.py
+│   ├── extract_events.py
+│   └── evaluate.py
+├── src/cen_ts/
+│   ├── data/
+│   ├── models/
+│   ├── events/
+│   ├── training/
+│   ├── evaluation/
+│   └── utils/
+├── third_party/tats/
+├── results/latest/
+├── tests/
+├── .gitignore
+├── LICENSE
+├── pyproject.toml
+└── README.md
+```
 
-使用 Python 3.10+。已有 TaTS/CUDA 环境可直接激活复用；新环境可运行：
+## 4. Installation
+
+Python 3.10 or newer is required. Create an isolated environment and install the package with the TaTS and test dependencies:
 
 ```bash
 python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# PowerShell: .venv/Scripts/Activate.ps1
-python -m pip install -e .
+```
+
+On Linux or macOS:
+
+```bash
+source .venv/bin/activate
+python -m pip install -U pip
 python -m pip install -e ".[tats,dev]"
 ```
 
-基础安装仅安装 `cen_ts` 业务包及其基础依赖；`tats` extra 包含 torch、transformers、sktime 等预测依赖，
-`dev` extra 提供 pytest。也可 `python -m pip install -r requirements.txt`。
-GPU 验证应先安装适配本机驱动的 PyTorch CUDA 版本；当前已验证的 TaTS 环境使用 PyTorch 2.7.0+cu128。
-本次不升级现有实验环境。
-
-GPT-2 严格从本地加载。默认目录为仓库的 `models/gpt2/`；也可设置环境变量 `CEN_TS_GPT2_PATH`，
-或向 P2 命令传 `--llm_path <本地目录>`。P0/P1 的 `tats.model_path` 支持配置覆盖，
-P2 子进程默认使用当前解释器，也支持 `--python <解释器>`。
-相对模型路径按仓库根目录解析，不依赖运行时工作目录。示例：
+On Windows PowerShell:
 
 ```powershell
-$env:CEN_TS_GPT2_PATH = "models/gpt2"
-$env:HF_HUB_OFFLINE = "1"
-$env:TRANSFORMERS_OFFLINE = "1"
+.venv\Scripts\Activate.ps1
+python -m pip install -U pip
+python -m pip install -e ".[tats,dev]"
 ```
 
-`configs/v6/*.local.yaml` 是被忽略的本机覆盖配置，不纳入版本管理。
-预检优先读取 `preflight.local.yaml`（如存在），否则读取示例配置。
-缺失本地权重时，模型集成测试会明确 skip；已有但损坏或不完整的模型仍会报错。
-P2 首批等价性检查需要 CUDA、本地 GPT-2 以及固定的原版 TaTS checkout。
-
-## 固定上游与模型源码
-
-TaTS 上游为 `https://github.com/iDEA-iSAIL-Lab-UIUC/TaTS`，
-固定 commit 为 `a053503674c61c54d101d01d47c9d680288a7c9a`。
-来源及全部模型 SHA-256 见 [vendor/tats/UPSTREAM.json](vendor/tats/UPSTREAM.json)，许可证保留在 vendor 目录。
-`third_party/TaTS/` 不参与业务包安装，不修改其源码；缺失对照时自行建立固定 checkout：
+The full baseline requires local GPT-2 weights; network fallback is disabled. Download them once (the ignored `models/` directory is not committed):
 
 ```bash
-git clone https://github.com/iDEA-iSAIL-Lab-UIUC/TaTS.git third_party/TaTS
-git -C third_party/TaTS checkout --detach a053503674c61c54d101d01d47c9d680288a7c9a
-python scripts/run.py p2-prepare
+python -c "from huggingface_hub import snapshot_download; snapshot_download('openai-community/gpt2', local_dir='models/gpt2')"
 ```
 
-正常 clone 本仓库已包含 vendor 下全部模型源码。`p2-prepare` 仅从固定的本地上游 commit 恢复缺失原版模型，
-保留所有已存在的文件，重复执行不会清空目录或覆盖业务代码、预测适配、实验清单。
-其他 vendor 文件若缺失，应从本仓库版本管理恢复。
-根目录 `/models/` 忽略本地权重；`vendor/tats/models/*.py` 则纳入版本管理。
-模型文件保留迁移前字节；清单分别记录上游 Git blob 和本机原始换行格式的哈希，源码比较只归一化 CRLF。
+Set `CEN_TS_GPT2_PATH` only if the weights are stored elsewhere.
 
-## P2
+## 5. Data Preparation
 
-生成文本变体（不会训练或调用 API）：
+The exact processed Environment table used by the retained run is included at `data/processed/Environment.csv`. Validate it without rewriting it:
 
 ```bash
-python scripts/run.py p2-variant --source_csv vendor/tats/data/Environment.csv --output_csv data/v6/p2/Environment_raw.csv --mode raw --text_column fact --manifest_path results/v6/p2/environment_raw_manifest.json
+python scripts/prepare_data.py --input data/processed/Environment.csv
 ```
 
-同一入口支持 `constant`、`shuffled` 模式；各自使用独立输出和 manifest 路径。
-协议说明保留在 `configs/v6/p2/cen_tats_p2.yaml`，实际运行参数由阶段 CLI 指定。
-raw 预测使用原始 CSV，保留官方 split 与数值窗口。
-
-仅执行首批输入、forward、loss、gradient 等价性比较（不调用优化器步骤、不正式训练）：
+To prepare the same schema from a locally supplied, non-regenerable source file, place it under the ignored `data/raw/` directory and run:
 
 ```bash
-python scripts/run.py p2-parity --output results/refactor/project-layout/p2_parity.json
+python scripts/prepare_data.py --input data/raw/Environment.csv --output data/processed/Environment.csv
 ```
 
-比较使用真实上游和 vendor 实现，保留相同 seed、GPT-2 层数、tokenization、pooling、projection 和 prior mix。
-缺少依赖会明确失败。可加 `--compare-saved-training` 只读比较既有训练指标和预测文件；默认不依赖这些大文件。
-历史 `results/v6/p2/p1b_parity.json` 不会被此命令覆盖。
+The input must contain 15,248 rows and the `date`, `OT`, and `fact` columns. Raw sources remain local so their original contents and licensing can be managed separately.
 
-正式预测运行命令如下，**会启动训练**，本次结构重构不执行：
+## 6. Event Extraction
+
+First validate the configuration, embedded prompt, schema, and dataset without an API call:
 
 ```bash
-python scripts/run.py p2-run --mode raw --prior_weight 0.5 --train_epochs 5 --run_id p2_raw_new_run
+python scripts/extract_events.py --config configs/event_extraction.yaml --dry-run
 ```
 
-## P3A
-
-审计和采样是离线阶段：
+For a real training-split extraction, configure the OpenAI-compatible endpoint variables required by `src/cen_ts/events/api_config.py`, then run:
 
 ```bash
-python scripts/run.py p3a-audit --config configs/v6/p3a/event_extraction_pilot.example.yaml
-python scripts/run.py p3a-sample --config configs/v6/p3a/event_extraction_pilot.example.yaml
+python scripts/extract_events.py --config configs/event_extraction.yaml --output data/processed/events.jsonl
 ```
 
-需真实抽取时，通过本机环境设置 `OPENAI_API_KEY`、`OPENAI_BASE_URL`、
-`CEN_EXTRACTOR_MODEL` 和预算变量（详见 `src/cen_ts/api_config.py`），再运行以下阶段。
-**probe 和 cache miss 的 pilot 会调用 API**，本次重构不执行：
+Responses are cached under ignored `.cache/cen_ts/events/`. API responses and cache files are not publication artifacts.
+
+## 7. Training and Evaluation
+
+Run a cheap CPU model-shape check:
 
 ```bash
-python scripts/run.py p3a-probe --config configs/v6/p3a/event_extraction_pilot.example.yaml
-python scripts/run.py p3a-run --config configs/v6/p3a/event_extraction_pilot.example.yaml
-python scripts/run.py p3a-cost --config configs/v6/p3a/event_extraction_pilot.example.yaml
-python scripts/run.py p3a-report
+python scripts/train_baseline.py --config configs/baseline.yaml --smoke-test
 ```
 
-提示词继续使用 `prompts/v6/event_extraction/`；训练内采样、缓存键、预算检查和验证/测试隔离保持原实现。
-各阶段默认结果路径保留，重跑产物生成命令前应确认其输出范围。
-
-## 验证
+Reproduce the full baseline only when CUDA and local GPT-2 weights are available:
 
 ```bash
-python -m pytest tests -q
-python scripts/run.py p2-parity --output results/refactor/project-layout/p2_parity.json
-python scripts/run.py layout-check
+python scripts/train_baseline.py --config configs/baseline.yaml
 ```
 
-pytest 包括当前业务单元测试、布局/初始化测试、本地模型检查及历史产物回归。
-历史产物断言不代表本次重新训练；当前计算等价性由单独的 P2 parity 命令验证。
-本轮迁移清单和验证记录见 [reports/refactor/project-layout.md](reports/refactor/project-layout.md)。
+Recompute the normalized metrics from the retained predictions and verify them against the published JSON:
+
+```bash
+python scripts/evaluate.py --predictions results/latest/predictions.csv --reference results/latest/metrics.json
+```
+
+Run the offline test suite:
+
+```bash
+python -m pytest -q
+```
+
+## 8. Current Results
+
+The latest valid run is the Environment raw-text baseline recorded at source commit `2bd8b526cf5d0069da842628382847d9680987df` with seed 2025. It completed training and passed retained-source parity checks. An unfinished event-extraction study was not promoted over this result.
+
+| Scale | MAE | MSE | RMSE | MAPE | MSPE |
+|---|---:|---:|---:|---:|---:|
+| Normalized | 0.369895 | 0.265448 | 0.515217 | 1.105526 | 19.349234 |
+| Original | 15.501421 | 466.192383 | 21.591488 | — | — |
+
+`results/latest/` contains the exact configuration, compact run log, core metrics, and 2,976 × 48 normalized forecasts needed for independent metric verification. The checkpoint is omitted because evaluation is reproducible from the predictions and retraining is defined by the pinned code and configuration.
+
+## 9. Current Limitations
+
+The valid result is a single-seed baseline on one dataset. The event extractor has an offline dry-run and schema/grounding tests, but the latest extraction study did not pass its temporal-quality gate and lacks completed manual annotation; no event-based forecasting improvement is claimed. Full retraining requires CUDA and separately downloaded GPT-2 weights, while real extraction requires a paid compatible API endpoint.

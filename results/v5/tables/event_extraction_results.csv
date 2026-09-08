@@ -1,2 +1,0 @@
-event_count,event_type_count,evidence_groundedness,hallucination_rate,dataset,label_type
-1621,10,1.0,0.0,Energy,silver_proxy

@@ -1,6 +1,0 @@
-long_term_forecast_p2_raw_forecasting_fair_pw0.0_s2025_iTransformer_custom_ftS_sl24_ll12_pl48_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_test_0  
-mse:0.2978626787662506, mae:0.39285707473754883, rmse:0.5457679629325867, mape:1.2534871101379395, mspe:28.65637969970703
-
-long_term_forecast_p2_raw_forecasting_fair_pw0.0_s2025_iTransformer_custom_ftS_sl24_ll12_pl48_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_test_0  
-mse:0.29714435338974, mae:0.39254799485206604, rmse:0.5451095104217529, mape:1.2486857175827026, mspe:28.51899528503418
-

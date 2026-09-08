@@ -1,5 +1,0 @@
-{
-  "method": "A7_Verifier-without-lag-aware-mask",
-  "prompt_source": "prompts/v5/manual or prompts/v5/apo depending on method",
-  "prompt_hash": "099f0160e461d498"
-}

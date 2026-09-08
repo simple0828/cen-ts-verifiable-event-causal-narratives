@@ -1,3 +1,0 @@
-method: raw_text_embedding
-embedder: tfidf_svd
-
