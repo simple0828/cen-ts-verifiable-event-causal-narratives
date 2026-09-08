@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / "tats_cen"))
+sys.path.insert(0, str(ROOT / "src"))
 
 from cen_ts.api_config import APIConfig
 from cen_ts.p3a_pipeline import build_extractor, load_config, read_jsonl, write_json

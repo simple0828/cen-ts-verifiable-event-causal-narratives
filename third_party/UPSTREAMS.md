@@ -1,5 +1,10 @@
 # Upstreams
 
+The v6 development copy lives in `vendor/tats/`; `third_party/TaTS/` is a read-only
+reference checkout at the TaTS commit below. Model blob and original checkout
+SHA-256 values are recorded in `vendor/tats/UPSTREAM.json`. Business code is installed
+only from `src/cen_ts/`. Keep the original upstream source and license unchanged.
+
 | Project | Repository | Commit | License | Used files | Purpose | Modified here | Official implementation |
 |---|---|---|---|---|---|---|---|
 | TaTS | iDEA-iSAIL-Lab-UIUC/TaTS | a053503674c61c54d101d01d47c9d680288a7c9a | see `third_party/TaTS/LICENSE.txt` | `models/PatchTST.py`, `models/iTransformer.py`, tokenizer/pooling design from `exp/exp_long_term_forecasting.py` | official forecasting backbone and TaTS text-channel protocol | no backbone edits | yes |

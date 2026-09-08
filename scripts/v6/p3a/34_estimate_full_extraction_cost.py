@@ -10,7 +10,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / "tats_cen"))
+sys.path.insert(0, str(ROOT / "src"))
 
 from cen_ts.p3a_pipeline import load_config, normalize_text, split_bounds, write_json
 

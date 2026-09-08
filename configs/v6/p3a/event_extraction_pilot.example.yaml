@@ -1,6 +1,6 @@
 dataset:
   name: Environment
-  source_csv: third_party/TaTS/data/Environment.csv
+  source_csv: vendor/tats/data/Environment.csv
   date_column: date
   text_column: fact
   target_column: OT

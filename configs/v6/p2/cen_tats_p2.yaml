@@ -1,10 +1,10 @@
 stage: P2
 upstream_commit: a053503674c61c54d101d01d47c9d680288a7c9a
-python: D:/Miniconda/envs/tats/python.exe
-llm_path: D:/models/gpt2
+python: null # current interpreter (sys.executable)
+llm_path: null # CEN_TS_GPT2_PATH, otherwise models/gpt2 under the project
 seed: 2025
 dataset:
-  raw_reproduction_csv: third_party/TaTS/data/Environment.csv
+  raw_reproduction_csv: vendor/tats/data/Environment.csv
   raw_variant_csv: data/v6/p2/Environment_raw.csv
   constant_variant_csv: data/v6/p2/Environment_constant.csv
   shuffled_variant_csv: data/v6/p2/Environment_shuffled.csv

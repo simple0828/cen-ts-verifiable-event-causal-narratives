@@ -14,15 +14,30 @@ dependencies = [
   "scipy>=1.9",
   "pyyaml>=6.0",
   "matplotlib>=3.6",
-  "tabulate>=0.9",
-  "openai>=1.0",
-  "torch>=2.13",
-  "reformer-pytorch>=1.4",
 ]
+
+[project.optional-dependencies]
+tats = [
+  "torch>=2.7",
+  "transformers>=4.40,<6",
+  "huggingface-hub>=0.23",
+  "safetensors>=0.4",
+  "reformer-pytorch>=1.4",
+  "einops>=0.8",
+  "sktime>=0.29",
+  "tqdm>=4.65",
+]
+dev = ["pytest>=7.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["cen_ts", "cen_ts.*"]
+namespaces = false
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+norecursedirs = ["archive", "vendor", "third_party"]
+markers = [
+  "integration: requires local GPT-2 weights and/or CUDA (skips if unavailable)",
+]

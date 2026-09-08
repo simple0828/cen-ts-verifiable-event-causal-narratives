@@ -8,7 +8,7 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from cen_tats.runtime.p1_official import audit_environment_data, p0_commit
+from cen_ts.runtime.p1_official import audit_environment_data, p0_commit
 
 
 if __name__ == "__main__":

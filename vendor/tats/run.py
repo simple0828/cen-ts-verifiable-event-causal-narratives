@@ -2,6 +2,11 @@ import argparse
 import json
 import os
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
+from cen_ts.paths import DEFAULT_GPT2_PATH, gpt2_path
+
 import torch
 from exp.exp_long_term_forecasting import Exp_Long_Term_Forecast
 from utils.print_args import print_args
@@ -155,7 +160,7 @@ if __name__ == '__main__':
     parser.add_argument('--text_mode', type=str, default=TextMode.RAW.value,
                         choices=[mode.value for mode in TextMode], help='CEN-TaTS text variant mode')
     parser.add_argument('--text_column', type=str, default=None, help='CSV text column to read; explicit value overrides text_mode default')
-    parser.add_argument('--llm_path', type=str, default='D:/models/gpt2', help='strict local GPT-2 path')
+    parser.add_argument('--llm_path', type=str, default=DEFAULT_GPT2_PATH, help='strict local GPT-2 path')
     parser.add_argument('--strict_local_llm', type=str2bool, default=True, help='forbid network fallback for GPT-2')
     parser.add_argument('--save_root', type=str, default='results/v6/p2/runs', help='root directory for isolated CEN-TaTS runs')
     parser.add_argument('--run_name', type=str, default=None, help='run directory name under save_root')
@@ -165,6 +170,7 @@ if __name__ == '__main__':
     parser.add_argument('--fail_on_missing_text', type=str2bool, default=True, help='fail if selected text column has missing values')
     parser.add_argument('--record_input_hashes', type=str2bool, default=True, help='record first-batch input hashes')
     args = parser.parse_args()
+    args.llm_path = str(gpt2_path(args.llm_path))
 
     args.text_column = resolve_text_column(args.text_mode, args.text_column)
     if args.text_mode != TextMode.RAW.value and args.text_column == "fact":

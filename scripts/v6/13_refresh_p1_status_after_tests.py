@@ -8,7 +8,7 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from cen_tats.runtime.p1_official import refresh_status_after_tests
+from cen_ts.runtime.p1_official import refresh_status_after_tests
 
 
 if __name__ == "__main__":

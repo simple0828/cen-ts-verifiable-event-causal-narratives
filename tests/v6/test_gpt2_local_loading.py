@@ -1,18 +1,18 @@
 import torch
 
-from cen_tats.runtime.preflight import check_gpt2_files, encode_texts_masked_average, load_pretrained_gpt2_strict
+from cen_ts.runtime.preflight import check_gpt2_files, encode_texts_masked_average, load_pretrained_gpt2_strict
 
 
-def test_gpt2_path_exists_and_hidden_size_is_768() -> None:
-    manifest = check_gpt2_files("D:/models/gpt2")
+def test_gpt2_path_exists_and_hidden_size_is_768(local_gpt2) -> None:
+    manifest = check_gpt2_files(local_gpt2)
     assert manifest["complete"] is True
-    _, _, meta = load_pretrained_gpt2_strict("D:/models/gpt2", local_files_only=True)
+    _, _, meta = load_pretrained_gpt2_strict(local_gpt2, local_files_only=True)
     assert meta["hidden_size"] == 768
     assert meta["random_init"] is False
 
 
-def test_local_files_only_embeddings_are_nonconstant() -> None:
-    tokenizer, model, _ = load_pretrained_gpt2_strict("D:/models/gpt2", local_files_only=True)
+def test_local_files_only_embeddings_are_nonconstant(local_gpt2) -> None:
+    tokenizer, model, _ = load_pretrained_gpt2_strict(local_gpt2, local_files_only=True)
     embeddings = encode_texts_masked_average(
         tokenizer,
         model,

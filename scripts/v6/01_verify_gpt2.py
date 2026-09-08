@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from cen_tats.runtime.preflight import (  # noqa: E402
+from cen_ts.runtime.preflight import (  # noqa: E402
     DEFAULT_GPT2_PATH,
     encode_texts_masked_average,
     force_hf_offline,

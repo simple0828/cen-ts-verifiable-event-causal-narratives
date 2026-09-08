@@ -1,8 +1,12 @@
+#!/usr/bin/env bash
+# Retained upstream sweep. Project stage entry: python scripts/run.py p2-run.
+tats_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+python_executable="${PYTHON:-python}"
 all_models=("iTransformer")
 
 GPU=0
 
-root_path=./data
+root_path="$tats_root/data"
 
 seeds=(2025)
 
@@ -21,15 +25,15 @@ do
         for dataset in "${datasets[@]}"
         do
             data_path=${dataset}.csv
-            model_id=$(basename ${root_path})
+            model_id=$(basename "$root_path")
 
             for pred_len in "${pred_lengths[@]}"
             do
                 echo "Running model $model_name with root $root_path, data $data_path, and pred_len $pred_len"
-                CUDA_VISIBLE_DEVICES=${GPU} python -u run.py \
+                CUDA_VISIBLE_DEVICES=${GPU} "$python_executable" -u "$tats_root/run.py" \
                     --task_name long_term_forecast \
                     --is_training 1 \
-                    --root_path $root_path \
+                    --root_path "$root_path" \
                     --data_path $data_path \
                     --model_id ${model_id}_${seed}_24_${pred_len}_fullLLM_${use_fullmodel} \
                     --model $model_name \

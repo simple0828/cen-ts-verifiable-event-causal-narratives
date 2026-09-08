@@ -19,12 +19,15 @@ import torch
 
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.dont_write_bytecode = True  # Keep the upstream reference checkout read-only.
+sys.path.insert(0, str(ROOT / "src"))
+from cen_ts.paths import DEFAULT_GPT2_PATH
 SRC = ROOT / "src"
 TATS = ROOT / "third_party" / "TaTS"
 OUT = ROOT / "results" / "v6" / "p1b_official_tats"
 REPORT = ROOT / "reports" / "v6" / "p1b_exact_official_tats_report.md"
-GPT2_PATH = Path("D:/models/gpt2")
-SAFE_TATS = "C:/Users/Administrator/Desktop/TS/cen-ts-verifiable-event-causal-narratives/third_party/TaTS"
+GPT2_PATH = Path(DEFAULT_GPT2_PATH)
+SAFE_TATS = (ROOT / "third_party" / "TaTS").resolve().as_posix()
 
 
 def _cmd(cmd: list[str], cwd: Path = ROOT, check: bool = False) -> str:
@@ -323,7 +326,7 @@ def write_report(
         f"- upstream_diff_patch: `results/v6/p1b_official_tats/upstream_diff.patch`",
         "",
         "## 3. Command",
-        "`D:/Miniconda/envs/tats/python.exe scripts/v6/14_run_p1b_exact_official_tats.py`",
+        "`python scripts/v6/14_run_p1b_exact_official_tats.py`",
         "",
         "## 4. Preflight",
         f"- GPT-2 path: `{manifest['preflight']['gpt2_model_path']}`",
@@ -349,7 +352,7 @@ def write_report(
         "| Item | P1 adapter M1 | P1b official M1 | Same? |",
         "| --- | --- | --- | --- |",
         "| Text encoding | GPT-2 forward hidden states, mask-average pooled | `llm_model.get_input_embeddings()(input_ids)`, mask-average pooled | No |",
-        "| GPT-2 path | `D:/models/gpt2` | `D:/models/gpt2` via strict monkeypatch wrapper | Yes |",
+        "| GPT-2 path | `models/gpt2 (or CEN_TS_GPT2_PATH)` | `models/gpt2 (or CEN_TS_GPT2_PATH)` via strict monkeypatch wrapper | Yes |",
         "| Pooling | avg | avg | Yes |",
         "| Projection MLP | custom P1 adapter projection | official `Linear-ReLU-Linear-ReLU-Dropout(0.3)` | No |",
         "| iTransformer params | d_model=512, n_heads=8, e_layers=2, d_ff=2048 | d_model=512, n_heads=8, e_layers=2, d_ff=2048 | Yes |",
@@ -399,8 +402,8 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "command.txt").write_text(
         "PowerShell:\n"
-        "D:/Miniconda/envs/tats/python.exe scripts/v6/14_run_p1b_exact_official_tats.py\n\n"
-        "Official Bash source converted from third_party/TaTS/scripts/main_forecast.sh; GPT-2 loading is redirected strictly to D:/models/gpt2 by wrapper monkeypatch.\n",
+        "python scripts/v6/14_run_p1b_exact_official_tats.py\n\n"
+        "Official Bash source converted from third_party/TaTS/scripts/main_forecast.sh; GPT-2 loading is redirected strictly to models/gpt2 (or CEN_TS_GPT2_PATH) by wrapper monkeypatch.\n",
         encoding="utf-8",
     )
     upstream_status = _cmd(["git", "-c", f"safe.directory={SAFE_TATS}", "-C", str(TATS), "status"])

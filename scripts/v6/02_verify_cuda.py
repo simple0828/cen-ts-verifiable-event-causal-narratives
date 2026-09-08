@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from cen_tats.runtime.preflight import DEFAULT_GPT2_PATH, check_cuda, nvidia_smi_text, write_json  # noqa: E402
+from cen_ts.runtime.preflight import DEFAULT_GPT2_PATH, check_cuda, nvidia_smi_text, write_json  # noqa: E402
 
 
 RESULT_DIR = ROOT / "results" / "v6" / "preflight"

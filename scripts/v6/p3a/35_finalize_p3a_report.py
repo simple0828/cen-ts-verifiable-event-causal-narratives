@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / "tats_cen"))
+sys.path.insert(0, str(ROOT / "src"))
 
 from cen_ts.api_config import APIConfig
 from cen_ts.p3a_pipeline import write_json
@@ -45,8 +45,9 @@ def main() -> None:
         text=True, encoding="utf-8",
     ).strip()
     upstream_clean = not upstream_status
-    expected_hash = read_json("results/v6/p2/p1b_parity.json")["tats_cen_itransformer_sha256"]
-    itransformer_unchanged = sha256(ROOT / "tats_cen/models/iTransformer.py") == expected_hash
+    expected_hash = read_json("vendor/tats/UPSTREAM.json")["model_blob_sha256"]["models/iTransformer.py"]
+    model_source = (ROOT / "vendor/tats/models/iTransformer.py").read_bytes().replace(b"\r\n", b"\n")
+    itransformer_unchanged = hashlib.sha256(model_source).hexdigest() == expected_hash
     prompt_hash = sha256(ROOT / "prompts/v6/event_extraction/p_extract_v1.txt")
     schema_hash = sha256(ROOT / "prompts/v6/event_extraction/schema_v1.json")
     hard_failures = []
@@ -138,7 +139,7 @@ P2 状态 `{p2['p2_status']}`，parity `{p2['p2_parity']}`；本阶段未重跑�
 
 ## 5. TaTS 预测基座是否未修改
 
-`third_party/TaTS clean={upstream_clean}`；`tats_cen/models/iTransformer.py unchanged={itransformer_unchanged}`。
+`third_party/TaTS clean={upstream_clean}`；`vendor/tats/models/iTransformer.py unchanged={itransformer_unchanged}`。
 
 ## 6. API 配置与脱敏状态
 

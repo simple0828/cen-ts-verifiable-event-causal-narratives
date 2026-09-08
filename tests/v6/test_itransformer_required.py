@@ -3,8 +3,8 @@ from types import SimpleNamespace
 import pytest
 import torch
 
-from cen_tats.runtime.preflight import PreflightError, check_backbone
-from cen_tats.runtime.tats_smoke import make_itransformer
+from cen_ts.runtime.preflight import PreflightError, check_backbone
+from cen_ts.runtime.tats_smoke import make_itransformer
 
 
 def test_patchtst_is_rejected_for_v6() -> None:

@@ -9,12 +9,12 @@ from typing import Any
 import torch
 from torch import nn
 
-from cen_tats.runtime.preflight import DEFAULT_GPT2_PATH, PreflightError, encode_texts_masked_average, load_pretrained_gpt2_strict, repo_root
+from cen_ts.runtime.preflight import DEFAULT_GPT2_PATH, PreflightError, encode_texts_masked_average, load_pretrained_gpt2_strict, repo_root
 
 
 def ensure_tats_import_path() -> None:
     root = repo_root()
-    tats = root / "third_party" / "TaTS"
+    tats = root / "vendor" / "tats"
     if str(tats) not in sys.path:
         sys.path.insert(0, str(tats))
 

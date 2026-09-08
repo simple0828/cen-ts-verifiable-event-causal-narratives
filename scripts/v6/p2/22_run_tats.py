@@ -16,13 +16,15 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[3]
-PYTHON = Path("D:/Miniconda/envs/tats/python.exe")
+sys.path.insert(0, str(ROOT / "src"))
+from cen_ts.paths import DEFAULT_GPT2_PATH
+PYTHON = sys.executable
 RUNS_ROOT = ROOT / "results" / "v6" / "p2" / "runs"
-TATS_CEN_RUN = ROOT / "tats_cen" / "run.py"
+TATS_RUN = ROOT / "vendor" / "tats" / "run.py"
 
 
 DATASETS = {
-    "raw": ROOT / "third_party" / "TaTS" / "data" / "Environment.csv",
+    "raw": ROOT / "vendor" / "tats" / "data" / "Environment.csv",
     "constant": ROOT / "data" / "v6" / "p2" / "Environment_constant.csv",
     "shuffled": ROOT / "data" / "v6" / "p2" / "Environment_shuffled.csv",
 }
@@ -98,16 +100,20 @@ def main() -> None:
     parser.add_argument("--prior_weight", type=float, default=0.5)
     parser.add_argument("--train_epochs", type=int, default=5)
     parser.add_argument("--run_id", default=None)
+    parser.add_argument("--python", default=PYTHON, help="Python interpreter for the child process")
+    parser.add_argument("--llm_path", default=DEFAULT_GPT2_PATH, help="Local GPT-2 directory")
+    parser.add_argument("--source_csv", type=Path, help="Override the mode's dataset path")
     args = parser.parse_args()
 
-    csv_path = DATASETS[args.mode]
+    from cen_ts.paths import gpt2_path, project_path
+    csv_path = project_path(args.source_csv or DATASETS[args.mode])
     run_id = args.run_id or f"p2_{args.mode}_pw{args.prior_weight}_e{args.train_epochs}_s2025"
     run_dir = (RUNS_ROOT / run_id).resolve()
     run_dir.mkdir(parents=True, exist_ok=True)
     log_path = run_dir / "train.log"
     command = [
-        str(PYTHON),
-        str(TATS_CEN_RUN),
+        str(args.python),
+        str(TATS_RUN),
         "--task_name", "long_term_forecast",
         "--is_training", "1",
         "--model_id", run_id,
@@ -127,7 +133,7 @@ def main() -> None:
         "--patience", "5",
         "--pool_type", "avg",
         "--llm_model", "GPT2",
-        "--llm_path", "D:/models/gpt2",
+        "--llm_path", str(gpt2_path(args.llm_path)),
         "--strict_local_llm", "True",
         "--d_model", "512",
         "--n_heads", "8",

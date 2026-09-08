@@ -14,8 +14,8 @@ experiments/logs/
 experiments/runs/
 artifacts/v5/hf_cache/
 artifacts/v5/text_embeddings/*.npz
-D:/models
-models/
+# Root-level local model weights; never ignore Python model source directories.
+/models/
 huggingface_cache/
 .cache/
 artifacts/v6/embeddings/
@@ -51,3 +51,6 @@ __pycache__/
 .pytest_cache/
 .venv/
 *.egg-info/
+
+/build/
+/dist/

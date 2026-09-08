@@ -13,7 +13,7 @@
 - Hash recording.
 - Cache keys.
 - Isolated experiment directories.
-- CEN-TaTS frontend modules under `cen_ts/`.
+- CEN-TaTS frontend modules under the project's `src/cen_ts/`.
 - Automated tests.
 
 ## B. Forbidden Changes

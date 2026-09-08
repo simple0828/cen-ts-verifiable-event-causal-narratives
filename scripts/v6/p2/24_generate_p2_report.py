@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "results" / "v6" / "p2"
 REPORT_DIR = ROOT / "reports" / "v6" / "p2"
 RUNS = OUT / "runs"
-SAFE_TATS = "C:/Users/Administrator/Desktop/TS/cen-ts-verifiable-event-causal-narratives/third_party/TaTS"
+SAFE_TATS = (ROOT / "third_party" / "TaTS").resolve().as_posix()
 UPSTREAM_COMMIT = "a053503674c61c54d101d01d47c9d680288a7c9a"
 
 
@@ -112,7 +112,7 @@ def main() -> None:
         "upstream_head": upstream_head,
         "upstream_clean": upstream_short == "",
         "upstream_untouched": upstream_short == "" and upstream_head == UPSTREAM_COMMIT,
-        "tats_cen_created": (ROOT / "tats_cen" / "run.py").exists(),
+        "tats_cen_created": (ROOT / "vendor" / "tats" / "run.py").exists(),
         "itransformer_unchanged": parity["itransformer_unchanged"],
         "official_pooling_unchanged": parity["pooled_embedding_hash_equal"],
         "official_projection_unchanged": parity["projection_shapes_equal"],
@@ -174,7 +174,7 @@ def main() -> None:
         "| `exp/exp_long_term_forecasting.py` | Modified | Replace GPT-2 network fallback with strict local loader and manifest | No | No | No | No |",
         "| `run.py` | Modified | Add CEN-TaTS CLI, run isolation, manifests, and text mode resolution | No | No | No | No |",
         "| `utils/strict_llm.py` | Added | Strict local GPT-2 loading helper | No | No | No | No |",
-        "| `cen_ts/*` | Added | Unified text variant frontend and reserved NotImplemented interfaces | No | No | No | Enables later attribution by text input only |",
+        "| `src/cen_ts/*` | Added | Unified text variant frontend and reserved NotImplemented interfaces | No | No | No | Enables later attribution by text input only |",
         "",
         "- Official pooling: UNCHANGED.",
         "- Official projection: UNCHANGED.",
@@ -205,13 +205,13 @@ def main() -> None:
         f"`{status['upstream_clean']}`",
         "",
         "## 7. tats_cen 创建方式",
-        "`scripts/v6/p2/20_create_tats_cen_fork.py` copied upstream git tracked files and wrote SHA256 manifests.",
+        "The original P2 fork was copied from the pinned upstream; current `scripts/v6/p2/20_prepare_vendor.py` only restores missing pristine models and preserves all existing code.",
         "",
         "## 8. 文件复制清单",
         "`results/v6/p2/upstream_manifest.json` and `results/v6/p2/tats_cen_initial_manifest.json`.",
         "",
         "## 9. 修改边界",
-        "`tats_cen/UPSTREAM_BOUNDARY.md` defines allowed and forbidden changes.",
+        "`vendor/tats/UPSTREAM_BOUNDARY.md` defines allowed and forbidden changes.",
         "",
         "## 10. 新增命令行参数",
         "`--text_mode`, `--text_column`, `--llm_path`, `--strict_local_llm`, `--prior_weight`, `--save_root`, `--run_name`, `--prompt_version`, `--event_cache_path`, `--text_variant_manifest`, `--fail_on_missing_text`, `--record_input_hashes`.",
@@ -256,7 +256,7 @@ def main() -> None:
         f"completed={status['shuffled_smoke_completed']}; predictions_differ_from_raw={status['shuffled_predictions_differ_from_raw']}.",
         "",
         "## 24. 自动测试",
-        "`D:/Miniconda/envs/tats/python.exe -m pytest tests/v6 -q` -> 37 passed.",
+        "`python -m pytest tests/v6 -q` -> 37 passed.",
         "",
         "## 25. 已修改文件",
         "See `reports/v6/p2/tats_cen_upstream_diff.md`.",

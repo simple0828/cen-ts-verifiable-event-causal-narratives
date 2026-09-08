@@ -5,7 +5,7 @@ import pytest
 
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / "tats_cen"))
+sys.path.insert(0, str(ROOT / "src"))
 
 from cen_ts.apo import APOOptimizer
 from cen_ts.causal_graph import CausalGraphBuilder

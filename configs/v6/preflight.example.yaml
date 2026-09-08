@@ -1,10 +1,10 @@
 environment:
   conda_env: tats
-  python_path: "D:/Miniconda/envs/tats/python.exe"
-  hf_home: "D:/huggingface_cache"
+  python_path: null # current interpreter (sys.executable)
+  hf_home: ".cache/huggingface"
 
 tats:
-  model_path: "D:/models/gpt2"
+  model_path: null # CEN_TS_GPT2_PATH, otherwise models/gpt2 under the project
   pretrained: true
   local_files_only: true
   allow_random_fallback: false

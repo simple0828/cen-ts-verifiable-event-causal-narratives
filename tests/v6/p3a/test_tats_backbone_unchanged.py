@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[3]
 
 
 def test_tats_backbone_unchanged():
-    expected = json.loads((ROOT / "results/v6/p2/p1b_parity.json").read_text(encoding="utf-8"))["tats_cen_itransformer_sha256"]
-    assert hashlib.sha256((ROOT / "tats_cen/models/iTransformer.py").read_bytes()).hexdigest() == expected
-    assert hashlib.sha256((ROOT / "third_party/TaTS/models/iTransformer.py").read_bytes()).hexdigest() == expected
+    expected = json.loads((ROOT / "vendor/tats/UPSTREAM.json").read_text(encoding="utf-8"))["model_blob_sha256"]["models/iTransformer.py"]
+    for folder in ("vendor/tats", "third_party/TaTS"):
+        source = (ROOT / folder / "models/iTransformer.py").read_bytes().replace(b"\r\n", b"\n")
+        assert hashlib.sha256(source).hexdigest() == expected

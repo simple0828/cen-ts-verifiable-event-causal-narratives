@@ -11,8 +11,9 @@ from pathlib import Path
 from typing import Any
 
 
-EXPECTED_PYTHON = "D:/Miniconda/envs/tats/python.exe"
-DEFAULT_GPT2_PATH = "D:/models/gpt2"
+from cen_ts.paths import DEFAULT_GPT2_PATH, gpt2_path
+
+EXPECTED_PYTHON = sys.executable
 REQUIRED_GPT2_FILES = (
     "config.json",
     "generation_config.json",
@@ -48,7 +49,7 @@ def repo_root() -> Path:
 def ensure_repo_imports() -> None:
     root = repo_root()
     src = root / "src"
-    tats = root / "third_party" / "TaTS"
+    tats = root / "vendor" / "tats"
     for path in (src, tats):
         text = str(path)
         if text not in sys.path:
@@ -66,6 +67,10 @@ def read_yaml_config(path: str | Path) -> dict[str, Any]:
         data = yaml.safe_load(f) or {}
     if not isinstance(data, dict):
         raise PreflightError(f"Config must be a mapping: {path}")
+    environment = data.setdefault("environment", {})
+    environment["python_path"] = environment.get("python_path") or sys.executable
+    tats = data.setdefault("tats", {})
+    tats["model_path"] = str(gpt2_path(tats.get("model_path")))
     return data
 
 
@@ -83,6 +88,7 @@ def load_preflight_config(path: str | Path | None = None) -> dict[str, Any]:
 
 def check_python_environment(expected_python: str = EXPECTED_PYTHON) -> dict[str, Any]:
     actual = normalized_path(sys.executable)
+    expected_python = expected_python or sys.executable
     expected = normalized_path(expected_python)
     ok = actual == expected
     result = {

@@ -15,7 +15,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / "tats_cen"))
+sys.path.insert(0, str(ROOT / "src"))
 
 from cen_ts.api_config import APIConfig
 from cen_ts.event_extractor import ExtractionOutcome

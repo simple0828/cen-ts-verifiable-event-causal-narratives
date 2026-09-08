@@ -11,7 +11,8 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / "tats_cen"))
+sys.path.insert(0, str(ROOT / "src"))
+from cen_ts.paths import DEFAULT_GPT2_PATH
 
 from cen_ts.p3a_pipeline import DATE_PATTERN, FORECAST_PATTERN, MULTI_SOURCE_PATTERN, load_config, normalize_text, source_text_hash, split_bounds, write_json
 
@@ -35,7 +36,7 @@ def main() -> None:
     token_counts: list[int] = []
     try:
         from transformers import GPT2Tokenizer
-        tokenizer = GPT2Tokenizer.from_pretrained("D:/models/gpt2", local_files_only=True)
+        tokenizer = GPT2Tokenizer.from_pretrained(DEFAULT_GPT2_PATH, local_files_only=True)
         token_counts = [len(tokenizer.encode(text, add_special_tokens=False)) for text in nonempty]
     except Exception as exc:
         tokenizer_status = f"unavailable:{type(exc).__name__}"

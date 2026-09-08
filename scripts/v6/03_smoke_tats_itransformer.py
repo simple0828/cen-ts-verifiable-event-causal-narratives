@@ -9,8 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from cen_tats.runtime.preflight import DEFAULT_GPT2_PATH, write_json  # noqa: E402
-from cen_tats.runtime.tats_smoke import run_itransformer_smoke  # noqa: E402
+from cen_ts.runtime.preflight import DEFAULT_GPT2_PATH, write_json  # noqa: E402
+from cen_ts.runtime.tats_smoke import run_itransformer_smoke  # noqa: E402
 
 
 RESULT_DIR = ROOT / "results" / "v6" / "preflight"

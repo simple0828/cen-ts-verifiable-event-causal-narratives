@@ -1,0 +1,29 @@
+{
+  "repository": "https://github.com/iDEA-iSAIL-Lab-UIUC/TaTS",
+  "commit": "a053503674c61c54d101d01d47c9d680288a7c9a",
+  "model_blob_sha256": {
+    "models/Autoformer.py": "7f1af779295a066da524132ca1f0c58fa986cd5a5db00e320e9b1dc50f553679",
+    "models/Crossformer.py": "dc1cf24bfde0d072372e7c190e8c015a9a6b67f94094b49b4fe613b39035507e",
+    "models/DLinear.py": "d5f92f665476a08823ea0cd0f2b318f963f44313511944253ac702439f6b193a",
+    "models/FEDformer.py": "c182172d67cce9d2e37cc29893d4fe7ad82aa79ce575422a8e2564e6b07682dd",
+    "models/FiLM.py": "ebf04414c43020a2fd612c7bf4833da8ce1f34331f9bec5aa5158f40b9c5517c",
+    "models/Informer.py": "0751a7726136d4a913efb8e4bed4c8b988c26bd230aefcdd91fb3916b0a72625",
+    "models/PatchTST.py": "0d526ccdbc02b1317ed736590a0f6fe68906198820523022a25331a5651c69b3",
+    "models/Transformer.py": "25e464fb3d4117b96dd0bb68f79eac3560fcc3a052ab9a82e9f2a673fb49233b",
+    "models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/iTransformer.py": "041d22ef6e0c0c614c8770f7dc005276f6cdb52bc0053f9c31ab31c9c15b3f3a"
+  },
+  "model_checkout_sha256": {
+    "models/Autoformer.py": "8ed31747afd847b052bdcbd85858d8dc009ed7e6927b7657d27104d19c830a3b",
+    "models/Crossformer.py": "095c2d972505b266f57495371d32dad9354373aa64dbfbfcf6fb9212a333e1c5",
+    "models/DLinear.py": "e8c142ce23bb2adfabb7f4e84e7fc50dccf631a847e0254ebab1c99ba6a623fc",
+    "models/FEDformer.py": "10f65ea07c139b51b6e71739796acd10b9199d32d7636fc8ff45b309803808de",
+    "models/FiLM.py": "5edcd226449f248bd33caddb78a8711555fbff8c2e70f29009cf3f1cc2d4c9f8",
+    "models/Informer.py": "3b128e015906268887ed58e33977e7f49a95da36bb99239a67482acf6c2f0b7f",
+    "models/PatchTST.py": "e40cb5c1ebe778a1cf3dc95dd145d20e748b3ce7b4e4eb9731aa19f0de433382",
+    "models/Transformer.py": "e8c54034535387b22249ffaabed6212f20b41f9ad12224077594cb497d6cc600",
+    "models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/iTransformer.py": "4c6f05411409ea260822471c00932f320fda9434bee4c034020aa23501bb821f"
+  },
+  "restored_missing_files": []
+}

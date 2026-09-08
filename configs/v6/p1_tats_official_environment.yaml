@@ -11,7 +11,7 @@ data:
 
 tats:
   llm_model: "GPT2"
-  model_path: "D:/models/gpt2"
+  model_path: null # CEN_TS_GPT2_PATH, otherwise models/gpt2 under the project
   pretrained: true
   local_files_only: true
   allow_random_fallback: false

@@ -1,0 +1,1503 @@
+{
+  "base_commit": "1a7d341384d09dfec2de126acb116360e4a92a3b",
+  "protected_file_count": 594,
+  "protected_files_changed": [],
+  "migration_mapping": [
+    {
+      "from": "configs/data/timemmd_energy.yaml",
+      "to": "archive/legacy/configs/data/timemmd_energy.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/data/timemmd_health.yaml",
+      "to": "archive/legacy/configs/data/timemmd_health.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/data/timemmd_traffic.yaml",
+      "to": "archive/legacy/configs/data/timemmd_traffic.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/exp/ablation_timemmd.yaml",
+      "to": "archive/legacy/configs/exp/ablation_timemmd.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/exp/main_timemmd.yaml",
+      "to": "archive/legacy/configs/exp/main_timemmd.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/exp/robustness_timemmd.yaml",
+      "to": "archive/legacy/configs/exp/robustness_timemmd.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/exp/smoke_test.yaml",
+      "to": "archive/legacy/configs/exp/smoke_test.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/model/event_features.yaml",
+      "to": "archive/legacy/configs/model/event_features.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/model/event_graph.yaml",
+      "to": "archive/legacy/configs/model/event_graph.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/model/event_graph_verifier.yaml",
+      "to": "archive/legacy/configs/model/event_graph_verifier.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/model/full_cents.yaml",
+      "to": "archive/legacy/configs/model/full_cents.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/model/numeric_only.yaml",
+      "to": "archive/legacy/configs/model/numeric_only.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/model/tats_text_embedding.yaml",
+      "to": "archive/legacy/configs/model/tats_text_embedding.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "configs/v5/cen_tats_v5.yaml",
+      "to": "archive/legacy/configs/v5/cen_tats_v5.yaml",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/00_check_environment.py",
+      "to": "archive/legacy/scripts/00_check_environment.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/01_prepare_timemmd.py",
+      "to": "archive/legacy/scripts/01_prepare_timemmd.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/02_prepare_gametime.py",
+      "to": "archive/legacy/scripts/02_prepare_gametime.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/03_run_smoke_test.py",
+      "to": "archive/legacy/scripts/03_run_smoke_test.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/04_run_numeric_baselines.py",
+      "to": "archive/legacy/scripts/04_run_numeric_baselines.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/05_run_text_embedding_baselines.py",
+      "to": "archive/legacy/scripts/05_run_text_embedding_baselines.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/06_extract_events.py",
+      "to": "archive/legacy/scripts/06_extract_events.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/07_build_event_graph.py",
+      "to": "archive/legacy/scripts/07_build_event_graph.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/08_run_event_feature_models.py",
+      "to": "archive/legacy/scripts/08_run_event_feature_models.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/09_run_verifier_ablation.py",
+      "to": "archive/legacy/scripts/09_run_verifier_ablation.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/10_run_narrative_apo.py",
+      "to": "archive/legacy/scripts/10_run_narrative_apo.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/11_run_robustness_tests.py",
+      "to": "archive/legacy/scripts/11_run_robustness_tests.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/12_collect_results.py",
+      "to": "archive/legacy/scripts/12_collect_results.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/13_generate_report.py",
+      "to": "archive/legacy/scripts/13_generate_report.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/14_run_granger_lite.py",
+      "to": "archive/legacy/scripts/14_run_granger_lite.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/15_run_gametime_sanity.py",
+      "to": "archive/legacy/scripts/15_run_gametime_sanity.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/16_scan_mmtsflib.py",
+      "to": "archive/legacy/scripts/16_scan_mmtsflib.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/17_run_llm_event_probe.py",
+      "to": "archive/legacy/scripts/17_run_llm_event_probe.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/18_run_torch_strong_baselines.py",
+      "to": "archive/legacy/scripts/18_run_torch_strong_baselines.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/19_run_torch_event_fusion.py",
+      "to": "archive/legacy/scripts/19_run_torch_event_fusion.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/scripts_compat.py",
+      "to": "archive/legacy/scripts/scripts_compat.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/00_audit_repo.py",
+      "to": "archive/legacy/scripts/v5/00_audit_repo.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/01_prepare_data.py",
+      "to": "archive/legacy/scripts/v5/01_prepare_data.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/02_extract_events.py",
+      "to": "archive/legacy/scripts/v5/02_extract_events.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/03_build_causal_graph.py",
+      "to": "archive/legacy/scripts/v5/03_build_causal_graph.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/04_infer_events_from_series.py",
+      "to": "archive/legacy/scripts/v5/04_infer_events_from_series.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/05_run_verifier.py",
+      "to": "archive/legacy/scripts/v5/05_run_verifier.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/06_render_narratives.py",
+      "to": "archive/legacy/scripts/v5/06_render_narratives.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/07_optimize_prompts.py",
+      "to": "archive/legacy/scripts/v5/07_optimize_prompts.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/08_cache_tats_embeddings.py",
+      "to": "archive/legacy/scripts/v5/08_cache_tats_embeddings.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/09_run_forecasting.py",
+      "to": "archive/legacy/scripts/v5/09_run_forecasting.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/10_run_ablations.py",
+      "to": "archive/legacy/scripts/v5/10_run_ablations.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/11_aggregate_results.py",
+      "to": "archive/legacy/scripts/v5/11_aggregate_results.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/12_generate_report_assets.py",
+      "to": "archive/legacy/scripts/v5/12_generate_report_assets.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/_stage.py",
+      "to": "archive/legacy/scripts/v5/_stage.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_ablations.ps1",
+      "to": "archive/legacy/scripts/v5/run_ablations.ps1",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_ablations.sh",
+      "to": "archive/legacy/scripts/v5/run_ablations.sh",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_all.ps1",
+      "to": "archive/legacy/scripts/v5/run_all.ps1",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_all.py",
+      "to": "archive/legacy/scripts/v5/run_all.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_all.sh",
+      "to": "archive/legacy/scripts/v5/run_all.sh",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_main.ps1",
+      "to": "archive/legacy/scripts/v5/run_main.ps1",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_main.sh",
+      "to": "archive/legacy/scripts/v5/run_main.sh",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_smoke.ps1",
+      "to": "archive/legacy/scripts/v5/run_smoke.ps1",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v5/run_smoke.sh",
+      "to": "archive/legacy/scripts/v5/run_smoke.sh",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "scripts/v6/p2/20_create_tats_cen_fork.py",
+      "to": "scripts/v6/p2/20_prepare_vendor.py",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "scripts/v6/p2/22_run_tats_cen.py",
+      "to": "scripts/v6/p2/22_run_tats.py",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "src/cen_tats/__init__.py",
+      "to": "archive/legacy/src/cen_tats/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/apo/__init__.py",
+      "to": "archive/legacy/src/cen_tats/apo/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/apo/beam_search.py",
+      "to": "archive/legacy/src/cen_tats/apo/beam_search.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/apo/candidate_evaluator.py",
+      "to": "archive/legacy/src/cen_tats/apo/candidate_evaluator.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/apo/optimizer.py",
+      "to": "archive/legacy/src/cen_tats/apo/optimizer.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/apo/prompt_editor.py",
+      "to": "archive/legacy/src/cen_tats/apo/prompt_editor.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/apo/prompt_program.py",
+      "to": "archive/legacy/src/cen_tats/apo/prompt_program.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/apo/textual_gradient.py",
+      "to": "archive/legacy/src/cen_tats/apo/textual_gradient.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/causal/__init__.py",
+      "to": "archive/legacy/src/cen_tats/causal/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/causal/event_series_builder.py",
+      "to": "archive/legacy/src/cen_tats/causal/event_series_builder.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/causal/event_study.py",
+      "to": "archive/legacy/src/cen_tats/causal/event_study.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/causal/graph_builder.py",
+      "to": "archive/legacy/src/cen_tats/causal/graph_builder.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/causal/graph_query.py",
+      "to": "archive/legacy/src/cen_tats/causal/graph_query.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/causal/lagged_tests.py",
+      "to": "archive/legacy/src/cen_tats/causal/lagged_tests.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/causal/teacher_edge_proposer.py",
+      "to": "archive/legacy/src/cen_tats/causal/teacher_edge_proposer.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/cli.py",
+      "to": "archive/legacy/src/cen_tats/cli.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/data/__init__.py",
+      "to": "archive/legacy/src/cen_tats/data/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/data/aligned_dataset.py",
+      "to": "archive/legacy/src/cen_tats/data/aligned_dataset.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/data/leakage_checks.py",
+      "to": "archive/legacy/src/cen_tats/data/leakage_checks.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/data/split_manager.py",
+      "to": "archive/legacy/src/cen_tats/data/split_manager.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/data/text_alignment.py",
+      "to": "archive/legacy/src/cen_tats/data/text_alignment.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/evaluation/__init__.py",
+      "to": "archive/legacy/src/cen_tats/evaluation/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/evaluation/event_metrics.py",
+      "to": "archive/legacy/src/cen_tats/evaluation/event_metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/evaluation/forecast_metrics.py",
+      "to": "src/cen_ts/evaluation/forecast_metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/evaluation/robustness.py",
+      "to": "archive/legacy/src/cen_tats/evaluation/robustness.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/evaluation/statistical_tests.py",
+      "to": "archive/legacy/src/cen_tats/evaluation/statistical_tests.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/evaluation/verifier_metrics.py",
+      "to": "archive/legacy/src/cen_tats/evaluation/verifier_metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/events/__init__.py",
+      "to": "archive/legacy/src/cen_tats/events/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/events/canonicalizer.py",
+      "to": "archive/legacy/src/cen_tats/events/canonicalizer.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/events/deduplicator.py",
+      "to": "archive/legacy/src/cen_tats/events/deduplicator.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/events/extractor.py",
+      "to": "archive/legacy/src/cen_tats/events/extractor.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/events/schema.py",
+      "to": "archive/legacy/src/cen_tats/events/schema.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/events/serializer.py",
+      "to": "archive/legacy/src/cen_tats/events/serializer.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/inverse_events/__init__.py",
+      "to": "archive/legacy/src/cen_tats/inverse_events/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/inverse_events/inverse_event_inference.py",
+      "to": "archive/legacy/src/cen_tats/inverse_events/inverse_event_inference.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/inverse_events/inverse_event_schema.py",
+      "to": "archive/legacy/src/cen_tats/inverse_events/inverse_event_schema.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/inverse_events/series_summarizer.py",
+      "to": "archive/legacy/src/cen_tats/inverse_events/series_summarizer.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/io_utils.py",
+      "to": "archive/legacy/src/cen_tats/io_utils.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/narratives/__init__.py",
+      "to": "archive/legacy/src/cen_tats/narratives/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/narratives/narrative_schema.py",
+      "to": "archive/legacy/src/cen_tats/narratives/narrative_schema.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/narratives/narrative_validator.py",
+      "to": "archive/legacy/src/cen_tats/narratives/narrative_validator.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/narratives/renderer.py",
+      "to": "archive/legacy/src/cen_tats/narratives/renderer.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/pipeline.py",
+      "to": "archive/legacy/src/cen_tats/pipeline.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/runtime/__init__.py",
+      "to": "src/cen_ts/runtime/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/runtime/p1_official.py",
+      "to": "src/cen_ts/runtime/p1_official.py",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "src/cen_tats/runtime/preflight.py",
+      "to": "src/cen_ts/runtime/preflight.py",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "src/cen_tats/runtime/tats_smoke.py",
+      "to": "src/cen_ts/runtime/tats_smoke.py",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "src/cen_tats/tats/__init__.py",
+      "to": "archive/legacy/src/cen_tats/tats/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/tats/experiment_runner.py",
+      "to": "archive/legacy/src/cen_tats/tats/experiment_runner.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/tats/official_adapter.py",
+      "to": "archive/legacy/src/cen_tats/tats/official_adapter.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/tats/text_cache.py",
+      "to": "archive/legacy/src/cen_tats/tats/text_cache.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/verifier/__init__.py",
+      "to": "archive/legacy/src/cen_tats/verifier/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/verifier/causal_verifier.py",
+      "to": "archive/legacy/src/cen_tats/verifier/causal_verifier.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/verifier/combined_verifier.py",
+      "to": "archive/legacy/src/cen_tats/verifier/combined_verifier.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/verifier/cycle_verifier.py",
+      "to": "archive/legacy/src/cen_tats/verifier/cycle_verifier.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/verifier/evidence_verifier.py",
+      "to": "archive/legacy/src/cen_tats/verifier/evidence_verifier.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cen_tats/verifier/lag_observability.py",
+      "to": "archive/legacy/src/cen_tats/verifier/lag_observability.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/__init__.py",
+      "to": "archive/legacy/src/cents/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/data/__init__.py",
+      "to": "archive/legacy/src/cents/data/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/data/gametime_loader.py",
+      "to": "archive/legacy/src/cents/data/gametime_loader.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/data/preprocessing.py",
+      "to": "archive/legacy/src/cents/data/preprocessing.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/data/splits.py",
+      "to": "archive/legacy/src/cents/data/splits.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/data/timemmd_loader.py",
+      "to": "archive/legacy/src/cents/data/timemmd_loader.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/evaluation/__init__.py",
+      "to": "archive/legacy/src/cents/evaluation/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/evaluation/explanation_metrics.py",
+      "to": "archive/legacy/src/cents/evaluation/explanation_metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/evaluation/forecasting_metrics.py",
+      "to": "archive/legacy/src/cents/evaluation/forecasting_metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/evaluation/robustness_metrics.py",
+      "to": "archive/legacy/src/cents/evaluation/robustness_metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/evaluation/statistical_tests.py",
+      "to": "archive/legacy/src/cents/evaluation/statistical_tests.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/experiment_runner.py",
+      "to": "archive/legacy/src/cents/experiment_runner.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/graph/__init__.py",
+      "to": "archive/legacy/src/cents/graph/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/graph/causal_discovery.py",
+      "to": "archive/legacy/src/cents/graph/causal_discovery.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/graph/granger_lite.py",
+      "to": "archive/legacy/src/cents/graph/granger_lite.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/graph/graph_io.py",
+      "to": "archive/legacy/src/cents/graph/graph_io.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/graph/lagged_causal_graph.py",
+      "to": "archive/legacy/src/cents/graph/lagged_causal_graph.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/models/__init__.py",
+      "to": "archive/legacy/src/cents/models/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/models/event_feature_models.py",
+      "to": "archive/legacy/src/cents/models/event_feature_models.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/models/fusion_baselines.py",
+      "to": "archive/legacy/src/cents/models/fusion_baselines.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/models/llm_forecast.py",
+      "to": "archive/legacy/src/cents/models/llm_forecast.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/models/numeric_baselines.py",
+      "to": "archive/legacy/src/cents/models/numeric_baselines.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/optimization/__init__.py",
+      "to": "archive/legacy/src/cents/optimization/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/optimization/narrative_apo.py",
+      "to": "archive/legacy/src/cents/optimization/narrative_apo.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/optimization/prompt_program.py",
+      "to": "archive/legacy/src/cents/optimization/prompt_program.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/reporting.py",
+      "to": "archive/legacy/src/cents/reporting.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/text/__init__.py",
+      "to": "archive/legacy/src/cents/text/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/text/event_extractor.py",
+      "to": "archive/legacy/src/cents/text/event_extractor.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/text/llm_event_extractor.py",
+      "to": "archive/legacy/src/cents/text/llm_event_extractor.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/text/narrative_builder.py",
+      "to": "archive/legacy/src/cents/text/narrative_builder.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/text/prompt_templates.py",
+      "to": "archive/legacy/src/cents/text/prompt_templates.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/text/text_embedder.py",
+      "to": "archive/legacy/src/cents/text/text_embedder.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/utils/__init__.py",
+      "to": "archive/legacy/src/cents/utils/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/utils/io.py",
+      "to": "archive/legacy/src/cents/utils/io.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/utils/logging.py",
+      "to": "archive/legacy/src/cents/utils/logging.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/utils/plotting.py",
+      "to": "archive/legacy/src/cents/utils/plotting.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/utils/seed.py",
+      "to": "archive/legacy/src/cents/utils/seed.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/verifier/__init__.py",
+      "to": "archive/legacy/src/cents/verifier/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/verifier/counterfactual_tests.py",
+      "to": "archive/legacy/src/cents/verifier/counterfactual_tests.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "src/cents/verifier/event_consistency.py",
+      "to": "archive/legacy/src/cents/verifier/event_consistency.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/.gitignore",
+      "to": "vendor/tats/.gitignore",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/LICENSE.txt",
+      "to": "vendor/tats/LICENSE.txt",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/README.md",
+      "to": "vendor/tats/README.md",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/README_CEN_TS.md",
+      "to": "vendor/tats/README_CEN_TS.md",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "tats_cen/UPSTREAM_BOUNDARY.md",
+      "to": "vendor/tats/UPSTREAM_BOUNDARY.md",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "tats_cen/cen_ts/__init__.py",
+      "to": "src/cen_ts/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/api_config.py",
+      "to": "src/cen_ts/api_config.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/apo.py",
+      "to": "src/cen_ts/apo.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/causal_graph.py",
+      "to": "src/cen_ts/causal_graph.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/event_extractor.py",
+      "to": "src/cen_ts/event_extractor.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/event_validation.py",
+      "to": "src/cen_ts/event_validation.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/inverse_event.py",
+      "to": "src/cen_ts/inverse_event.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/llm_cache.py",
+      "to": "src/cen_ts/llm_cache.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/llm_client.py",
+      "to": "src/cen_ts/llm_client.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/narrative.py",
+      "to": "src/cen_ts/narrative.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/ontology.py",
+      "to": "src/cen_ts/ontology.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/p3a_pipeline.py",
+      "to": "src/cen_ts/p3a_pipeline.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/schemas.py",
+      "to": "src/cen_ts/schemas.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/text_modes.py",
+      "to": "src/cen_ts/text_modes.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/variant_builder.py",
+      "to": "src/cen_ts/variant_builder.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/cen_ts/verifier.py",
+      "to": "src/cen_ts/verifier.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Agriculture.csv",
+      "to": "vendor/tats/data/Agriculture.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Climate.csv",
+      "to": "vendor/tats/data/Climate.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Economy.csv",
+      "to": "vendor/tats/data/Economy.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Energy.csv",
+      "to": "vendor/tats/data/Energy.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Environment.csv",
+      "to": "vendor/tats/data/Environment.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Health.csv",
+      "to": "vendor/tats/data/Health.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Security.csv",
+      "to": "vendor/tats/data/Security.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/SocialGood.csv",
+      "to": "vendor/tats/data/SocialGood.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data/Traffic.csv",
+      "to": "vendor/tats/data/Traffic.csv",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data_provider/__init__.py",
+      "to": "vendor/tats/data_provider/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data_provider/data_factory.py",
+      "to": "vendor/tats/data_provider/data_factory.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data_provider/data_loader.py",
+      "to": "vendor/tats/data_provider/data_loader.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data_provider/m4.py",
+      "to": "vendor/tats/data_provider/m4.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/data_provider/uea.py",
+      "to": "vendor/tats/data_provider/uea.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/exp/__init__.py",
+      "to": "vendor/tats/exp/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/exp/exp_basic.py",
+      "to": "vendor/tats/exp/exp_basic.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/exp/exp_long_term_forecasting.py",
+      "to": "vendor/tats/exp/exp_long_term_forecasting.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/AutoCorrelation.py",
+      "to": "vendor/tats/layers/AutoCorrelation.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/Autoformer_EncDec.py",
+      "to": "vendor/tats/layers/Autoformer_EncDec.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/Conv_Blocks.py",
+      "to": "vendor/tats/layers/Conv_Blocks.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/Crossformer_EncDec.py",
+      "to": "vendor/tats/layers/Crossformer_EncDec.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/ETSformer_EncDec.py",
+      "to": "vendor/tats/layers/ETSformer_EncDec.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/Embed.py",
+      "to": "vendor/tats/layers/Embed.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/FourierCorrelation.py",
+      "to": "vendor/tats/layers/FourierCorrelation.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/MultiWaveletCorrelation.py",
+      "to": "vendor/tats/layers/MultiWaveletCorrelation.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/Pyraformer_EncDec.py",
+      "to": "vendor/tats/layers/Pyraformer_EncDec.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/SelfAttention_Family.py",
+      "to": "vendor/tats/layers/SelfAttention_Family.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/StandardNorm.py",
+      "to": "vendor/tats/layers/StandardNorm.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/Transformer_EncDec.py",
+      "to": "vendor/tats/layers/Transformer_EncDec.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/layers/__init__.py",
+      "to": "vendor/tats/layers/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/run.py",
+      "to": "vendor/tats/run.py",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "tats_cen/scripts/main_forecast.sh",
+      "to": "vendor/tats/scripts/main_forecast.sh",
+      "exists": true,
+      "content_equal_lf": false
+    },
+    {
+      "from": "tats_cen/utils/ADFtest.py",
+      "to": "vendor/tats/utils/ADFtest.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/__init__.py",
+      "to": "vendor/tats/utils/__init__.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/augmentation.py",
+      "to": "vendor/tats/utils/augmentation.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/dtw.py",
+      "to": "vendor/tats/utils/dtw.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/dtw_metric.py",
+      "to": "vendor/tats/utils/dtw_metric.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/losses.py",
+      "to": "vendor/tats/utils/losses.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/m4_summary.py",
+      "to": "vendor/tats/utils/m4_summary.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/masking.py",
+      "to": "vendor/tats/utils/masking.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/metrics.py",
+      "to": "vendor/tats/utils/metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/print_args.py",
+      "to": "vendor/tats/utils/print_args.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/strict_llm.py",
+      "to": "vendor/tats/utils/strict_llm.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/timefeatures.py",
+      "to": "vendor/tats/utils/timefeatures.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tats_cen/utils/tools.py",
+      "to": "vendor/tats/utils/tools.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/test_event_consistency.py",
+      "to": "archive/legacy/tests/test_event_consistency.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/test_event_extractor.py",
+      "to": "archive/legacy/tests/test_event_extractor.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/test_metrics.py",
+      "to": "archive/legacy/tests/test_metrics.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/test_timemmd_loader.py",
+      "to": "archive/legacy/tests/test_timemmd_loader.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_cache_hash.py",
+      "to": "archive/legacy/tests/v5/test_cache_hash.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_event_schema.py",
+      "to": "archive/legacy/tests/v5/test_event_schema.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_evidence_span_grounding.py",
+      "to": "archive/legacy/tests/v5/test_evidence_span_grounding.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_lag_observability.py",
+      "to": "archive/legacy/tests/v5/test_lag_observability.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_lag_overlap.py",
+      "to": "archive/legacy/tests/v5/test_lag_overlap.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_narrative_faithfulness.py",
+      "to": "archive/legacy/tests/v5/test_narrative_faithfulness.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_no_future_series_for_inverse_event.py",
+      "to": "archive/legacy/tests/v5/test_no_future_series_for_inverse_event.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_no_future_text.py",
+      "to": "archive/legacy/tests/v5/test_no_future_text.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_prompt_dev_test_isolation.py",
+      "to": "archive/legacy/tests/v5/test_prompt_dev_test_isolation.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_random_verifier_coverage.py",
+      "to": "archive/legacy/tests/v5/test_random_verifier_coverage.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_same_backbone_config.py",
+      "to": "archive/legacy/tests/v5/test_same_backbone_config.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_tats_input_shape.py",
+      "to": "archive/legacy/tests/v5/test_tats_input_shape.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_temporal_split.py",
+      "to": "archive/legacy/tests/v5/test_temporal_split.py",
+      "exists": true,
+      "content_equal_lf": true
+    },
+    {
+      "from": "tests/v5/test_train_only_causal_graph.py",
+      "to": "archive/legacy/tests/v5/test_train_only_causal_graph.py",
+      "exists": true,
+      "content_equal_lf": true
+    }
+  ],
+  "unexpected_migration_changes": [],
+  "models": {
+    "models/Autoformer.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/Crossformer.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/DLinear.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/FEDformer.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/FiLM.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/Informer.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/PatchTST.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/Transformer.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/__init__.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    },
+    "models/iTransformer.py": {
+      "tracked": true,
+      "pinned_source_equal": true
+    }
+  },
+  "old_active_directories": [],
+  "old_package_imports": [],
+  "hardcoded_machine_paths": [],
+  "syntax_errors": [],
+  "upstream_commit": "a053503674c61c54d101d01d47c9d680288a7c9a",
+  "upstream_clean": true,
+  "passed": true
+}

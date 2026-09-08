@@ -7,9 +7,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-TATS_CEN = ROOT / "tats_cen"
-if str(TATS_CEN) not in sys.path:
-    sys.path.insert(0, str(TATS_CEN))
+SRC = ROOT / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
 
 from cen_ts.variant_builder import build_text_variant
 

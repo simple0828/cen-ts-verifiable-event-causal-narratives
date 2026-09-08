@@ -1,6 +1,6 @@
 import pytest
 
-from cen_tats.runtime.preflight import PreflightError, check_no_random_fallback
+from cen_ts.runtime.preflight import PreflightError, check_no_random_fallback
 
 
 def test_random_embedding_fallback_is_forbidden() -> None:

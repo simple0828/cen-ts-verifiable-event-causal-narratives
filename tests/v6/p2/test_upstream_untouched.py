@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-SAFE_TATS = "C:/Users/Administrator/Desktop/TS/cen-ts-verifiable-event-causal-narratives/third_party/TaTS"
+SAFE_TATS = (ROOT / "third_party" / "TaTS").resolve().as_posix()
 
 
 def test_upstream_untouched():

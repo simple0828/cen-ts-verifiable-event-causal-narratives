@@ -9,9 +9,9 @@ This directory is the P2 development fork created from official TaTS commit `a05
 - isolated `--save_root` and `--run_name`;
 - `--prior_weight` protocols;
 - manifests and input/text/GPT-2 hashes;
-- frontend text variant interfaces under `cen_ts/`.
+- frontend text variant interfaces under the installed `src/cen_ts/` business package.
 
-P2 implements only `raw`, `constant`, and `shuffled` text variants. Event extraction, causal graph construction, inverse event generation, verification, narrative generation, and APO are reserved for later stages and raise `NotImplementedError`.
+P2 implements `raw`, `constant`, and `shuffled` text variants. P3A event extraction and narrative rendering live in `src/cen_ts/`; causal graph construction, inverse event generation, verification, and APO remain reserved interfaces.
 
 The model math is intended to match official TaTS:
 
@@ -23,7 +23,7 @@ The model math is intended to match official TaTS:
 
 Primary P2 scripts:
 
-- `scripts/v6/p2/20_create_tats_cen_fork.py`
+- `scripts/v6/p2/20_prepare_vendor.py` (only restores missing pristine model files)
 - `scripts/v6/p2/21_build_text_variant.py`
-- `scripts/v6/p2/22_run_tats_cen.py`
+- `scripts/v6/p2/22_run_tats.py`
 - `scripts/v6/p2/23_compare_p1b_parity.py`

@@ -21,8 +21,8 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
-from cen_tats.evaluation.forecast_metrics import forecast_metrics
-from cen_tats.runtime.preflight import (
+from cen_ts.evaluation.forecast_metrics import forecast_metrics
+from cen_ts.runtime.preflight import (
     DEFAULT_GPT2_PATH,
     encode_texts_masked_average,
     gpt2_file_manifest,
@@ -108,7 +108,7 @@ def resolve_environment_csv(cfg: dict[str, Any]) -> tuple[Path, str]:
     root = repo_root()
     data = cfg["data"]
     requested = root / str(data["root_path"]).replace("./", "") / str(data["data_path"])
-    official = root / "third_party" / "TaTS" / "data" / str(data["data_path"])
+    official = root / "vendor" / "tats" / "data" / str(data["data_path"])
     if requested.exists():
         return requested, "configured_path"
     if official.exists():
@@ -441,7 +441,7 @@ def indices_for(windows: WindowData, split_name: str) -> np.ndarray:
 
 
 def ensure_tats_import_path() -> None:
-    tats = repo_root() / "third_party" / "TaTS"
+    tats = repo_root() / "vendor" / "tats"
     if str(tats) not in sys.path:
         sys.path.insert(0, str(tats))
 
@@ -749,7 +749,7 @@ def train_one_method(
         "input_shape_combined_channels": model.backbone_config["enc_in"],
         "best_epoch": best_epoch,
         "completed_epochs": epochs,
-        "official_backbone_file": "third_party/TaTS/models/iTransformer.py",
+        "official_backbone_file": "vendor/tats/models/iTransformer.py",
         "forecasting_head_modified": False,
         "attention_modified": False,
         "loss_structure_modified": False,
@@ -1062,7 +1062,7 @@ def write_report(
         json.dumps(audit["split_boundaries"], ensure_ascii=False),
         "",
         "## 7. 官方 TaTS 适配情况",
-        "The run imports `third_party/TaTS/models/iTransformer.py` directly and keeps attention, forecasting head, forward data flow, and MSE loss structure unchanged. The adapter supplies strict local GPT-2 text embeddings, TaTS-style projection to 12 auxiliary variables, and result logging.",
+        "The run imports `vendor/tats/models/iTransformer.py` directly and keeps attention, forecasting head, forward data flow, and MSE loss structure unchanged. The adapter supplies strict local GPT-2 text embeddings, TaTS-style projection to 12 auxiliary variables, and result logging.",
         "",
         "## 8. GPT-2 加载情况",
         f"- Model path: `{cfg['tats']['model_path']}`",
@@ -1155,8 +1155,8 @@ def write_report(
         "# P1 Upstream Changes\n\n"
         "| File | Original behavior | Modification reason | Affects backbone | Diff summary |\n"
         "| --- | --- | --- | --- | --- |\n"
-        "| `third_party/TaTS/models/iTransformer.py` | Official iTransformer backbone | No source modification | No | No diff |\n"
-        "| adapter in `src/cen_tats/runtime/p1_official.py` | N/A | Adds local GPT-2 strict loading, projection, logging, diagnostics | No | Wrapper only |\n",
+        "| `vendor/tats/models/iTransformer.py` | Official iTransformer backbone | No source modification | No | No diff |\n"
+        "| adapter in `src/cen_ts/runtime/p1_official.py` | N/A | Adds local GPT-2 strict loading, projection, logging, diagnostics | No | Wrapper only |\n",
         encoding="utf-8",
     )
 

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
+import os
+import subprocess
 import json
 import math
 import sys
@@ -14,10 +17,12 @@ import torch
 
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "results" / "v6" / "p2"
+sys.path.insert(0, str(ROOT / "src"))
+from cen_ts.paths import DEFAULT_GPT2_PATH, UPSTREAM_COMMIT, project_path, gpt2_path
+OUT = ROOT / "results" / "refactor" / "project-layout"
 P1B = ROOT / "results" / "v6" / "p1b_official_tats"
-RAW_RUN = OUT / "runs" / "p2_raw_official_reproduction_pw0.5_s2025"
-GPT2_PATH = Path("D:/models/gpt2")
+RAW_RUN = ROOT / "results" / "v6" / "p2" / "runs" / "p2_raw_official_reproduction_pw0.5_s2025"
+GPT2_PATH = Path(DEFAULT_GPT2_PATH)
 
 
 def write_json(path: Path, data: Any) -> None:
@@ -190,15 +195,15 @@ def run_first_batch(kind: str) -> dict[str, Any]:
         patch_gpt2()
         args = base_args(ROOT / "third_party" / "TaTS" / "data", "Environment.csv")
     else:
-        sys.path.insert(0, str((ROOT / "tats_cen").resolve()))
-        args = base_args(ROOT / "third_party" / "TaTS" / "data", "Environment.csv")
+        sys.path.insert(0, str((ROOT / "vendor" / "tats").resolve()))
+        args = base_args(ROOT / "vendor" / "tats" / "data", "Environment.csv")
         args.text_mode = "raw"
         args.text_column = "fact"
         args.llm_path = str(GPT2_PATH)
         args.strict_local_llm = True
         args.fail_on_missing_text = True
         args.record_input_hashes = True
-        args.run_dir = str((OUT / "parity_tmp" / "tats_cen").resolve())
+        args.run_dir = str((OUT / "parity_tmp" / "vendored").resolve())
         args.gpt2_manifest_path = str(Path(args.run_dir) / "gpt2_manifest.json")
     from exp.exp_long_term_forecasting import Exp_Long_Term_Forecast
 
@@ -257,52 +262,68 @@ def max_abs(a: np.ndarray, b: np.ndarray) -> float:
 
 
 def main() -> None:
+    global GPT2_PATH, OUT
+    parser = argparse.ArgumentParser(description="Offline P2 first-batch, forward, loss and gradient parity; no training.")
+    parser.add_argument("--llm_path", default=DEFAULT_GPT2_PATH)
+    parser.add_argument("--output", type=Path, default=OUT / "p2_parity.json")
+    parser.add_argument("--compare-saved-training", action="store_true", help="Also read existing P1b/P2 training metrics and predictions")
+    args = parser.parse_args()
+    GPT2_PATH = gpt2_path(args.llm_path)
+    output = project_path(args.output)
+    OUT = output.parent
+    sys.dont_write_bytecode = True
+    os.environ["HF_HUB_OFFLINE"] = "1"
+    os.environ["TRANSFORMERS_OFFLINE"] = "1"
+    upstream = ROOT / "third_party" / "TaTS"
+    commit = subprocess.check_output(
+        ["git", "-c", f"safe.directory={upstream.resolve().as_posix()}", "-C", str(upstream), "rev-parse", "HEAD"], text=True
+    ).strip()
+    if commit != UPSTREAM_COMMIT:
+        raise RuntimeError(f"Expected upstream {UPSTREAM_COMMIT}, found {commit}")
     official = run_first_batch("official")
-    tats_cen = run_first_batch("tats_cen")
-    p1b_metrics = json.loads((P1B / "metrics.json").read_text(encoding="utf-8"))["metrics"]
-    raw_metrics = json.loads((RAW_RUN / "test_metrics.json").read_text(encoding="utf-8"))
-    p1b_pred = np.load(P1B / "predictions.npy")
-    raw_pred = np.load(RAW_RUN / "predictions.npy")
-    corr = float(np.corrcoef(p1b_pred.reshape(-1), raw_pred.reshape(-1))[0, 1])
-    p1b_scaled_mse = float(p1b_metrics["native_scaled"]["MSE"])
-    raw_scaled_mse = float(raw_metrics["native_scaled"]["MSE"])
-    metric_rel = abs(raw_scaled_mse - p1b_scaled_mse) / p1b_scaled_mse
-    forward_diff = max_abs(official["first_forward_output"], tats_cen["first_forward_output"])
-    loss_diff = abs(official["first_loss"] - tats_cen["first_loss"])
-    grad_diff = max_abs(official["first_gradient"], tats_cen["first_gradient"])
-    result = {
-        "upstream_itransformer_sha256": sha256_file(ROOT / "third_party" / "TaTS" / "models" / "iTransformer.py"),
-        "tats_cen_itransformer_sha256": sha256_file(ROOT / "tats_cen" / "models" / "iTransformer.py"),
-        "itransformer_unchanged": sha256_file(ROOT / "third_party" / "TaTS" / "models" / "iTransformer.py") == sha256_file(ROOT / "tats_cen" / "models" / "iTransformer.py"),
-        "projection_shapes_equal": official["projection_shapes"] == tats_cen["projection_shapes"],
-        "train_window_count_equal": official["train_window_count"] == tats_cen["train_window_count"],
-        "first_batch_numeric_parity": official["first_batch_numeric_hash"] == tats_cen["first_batch_numeric_hash"],
-        "first_batch_token_parity": official["first_batch_token_ids_hash"] == tats_cen["first_batch_token_ids_hash"],
-        "pooled_embedding_hash_equal": official["first_batch_pooled_embedding_hash"] == tats_cen["first_batch_pooled_embedding_hash"],
-        "projected_text_hash_equal": official["first_batch_projected_text_hash"] == tats_cen["first_batch_projected_text_hash"],
-        "combined_input_hash_equal": official["first_batch_combined_input_hash"] == tats_cen["first_batch_combined_input_hash"],
-        "initial_model_state_equal": official["model_state_hash"] == tats_cen["model_state_hash"],
-        "forward_max_abs_diff": forward_diff,
-        "loss_abs_diff": loss_diff,
-        "gradient_max_abs_diff": grad_diff,
-        "p1b_scaled_mse": p1b_scaled_mse,
-        "tats_cen_scaled_mse": raw_scaled_mse,
-        "metric_relative_difference": metric_rel,
-        "prediction_correlation": corr,
-        "p2_parity": "PASS"
-        if (
-            official["first_batch_numeric_hash"] == tats_cen["first_batch_numeric_hash"]
-            and official["first_batch_token_ids_hash"] == tats_cen["first_batch_token_ids_hash"]
-            and forward_diff < 1e-6
-            and loss_diff < 1e-6
-            and grad_diff < 1e-6
-            and metric_rel < 0.01
-            and corr > 0.99
-        )
-        else "FAIL",
+    vendored = run_first_batch("vendored")
+    equal_fields = {
+        "projection_shapes_equal": "projection_shapes",
+        "train_window_count_equal": "train_window_count",
+        "first_batch_numeric_parity": "first_batch_numeric_hash",
+        "first_batch_token_parity": "first_batch_token_ids_hash",
+        "pooled_embedding_hash_equal": "first_batch_pooled_embedding_hash",
+        "projected_text_hash_equal": "first_batch_projected_text_hash",
+        "combined_input_hash_equal": "first_batch_combined_input_hash",
+        "initial_model_state_equal": "model_state_hash",
     }
-    write_json(OUT / "p1b_parity.json", result)
+    result = {name: official[key] == vendored[key] for name, key in equal_fields.items()}
+    model_rel = Path("models/iTransformer.py")
+    # Normalize checkout line endings only for the source-comparison hash.
+    source_hash = lambda path: hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+    result.update({
+        "upstream_commit": commit,
+        "upstream_itransformer_sha256": source_hash(upstream / model_rel),
+        "vendored_itransformer_sha256": source_hash(ROOT / "vendor/tats" / model_rel),
+        "itransformer_unchanged": source_hash(upstream / model_rel) == source_hash(ROOT / "vendor/tats" / model_rel),
+        "forward_max_abs_diff": max_abs(official["first_forward_output"], vendored["first_forward_output"]),
+        "loss_abs_diff": abs(official["first_loss"] - vendored["first_loss"]),
+        "gradient_max_abs_diff": max_abs(official["first_gradient"], vendored["first_gradient"]),
+        "training_run": False,
+        "paid_api_calls": 0,
+        "saved_training_comparison": "not_requested",
+    })
+    passed = (all(result[name] for name in equal_fields)
+              and result["itransformer_unchanged"]
+              and all(result[name] < 1e-6 for name in ("forward_max_abs_diff", "loss_abs_diff", "gradient_max_abs_diff")))
+    if args.compare_saved_training:
+        p1b_metrics = json.loads((P1B / "metrics.json").read_text(encoding="utf-8"))["metrics"]
+        raw_metrics = json.loads((RAW_RUN / "test_metrics.json").read_text(encoding="utf-8"))
+        p1b_pred, raw_pred = np.load(P1B / "predictions.npy"), np.load(RAW_RUN / "predictions.npy")
+        metric_rel = abs(raw_metrics["native_scaled"]["MSE"] - p1b_metrics["native_scaled"]["MSE"]) / p1b_metrics["native_scaled"]["MSE"]
+        corr = float(np.corrcoef(p1b_pred.reshape(-1), raw_pred.reshape(-1))[0, 1])
+        result.update(saved_training_comparison="completed", metric_relative_difference=metric_rel, prediction_correlation=corr)
+        passed = passed and metric_rel < 0.01 and corr > 0.99
+    result["p2_parity"] = "PASS" if passed else "FAIL"
+    write_json(output, result)
     print(json.dumps(result, indent=2, sort_keys=True))
+    if not passed:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
